@@ -2,22 +2,28 @@ import { Link } from 'react-router-dom';
 
 const Mainpage = () => {
   return (
-    <div className="container">
-      <header>
-        <div className="row text-center mb-3">
-          <div className="col-6 h4">
-            <Link to="/">Mainpage</Link>
+    <>
+      <div className="container vh-100">
+        <div className="row justify-content-center mb-5 mt-5">
+          <div className="col-auto h4">
+            <Link to="/" className="btn btn-primary">
+              Главная
+            </Link>
           </div>
-          <div className="col-6 h4">
-            <Link to="/loginpage">Login</Link>
+          <div className="col-auto h4">
+            <Link to="/loginpage" className="btn btn-primary">
+              Войти
+            </Link>
           </div>
         </div>
-      </header>
 
-      <div className="row mb-3">
-        <h1 className="col-12 h4 text-center">Welcome to Melegram!</h1>
+        <div className="row justify-content-center">
+          <h1 className="col-auto h3 text-primary">
+            Добро пожаловать в МЕЛЕГРАМ-ЧАТ!
+          </h1>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
