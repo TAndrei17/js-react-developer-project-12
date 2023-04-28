@@ -11,8 +11,8 @@ const Notfoundpage = () => {
           (ошибка 404)
         </div>
         <div className="col-auto mt-3">
-          <Link to="/" className="btn btn-primary">
-            На главную
+          <Link to="/loginpage" className="btn btn-primary">
+            Войти
           </Link>
         </div>
       </div>
