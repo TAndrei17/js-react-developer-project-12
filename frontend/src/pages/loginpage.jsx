@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik';
-import { Link } from 'react-router-dom';
 import * as yup from 'yup';
 import axios from 'axios';
 import cn from 'classnames';
@@ -14,23 +14,20 @@ const LoginSchema = yup.object().shape({
     .min(5, 'В пароле должно быть минимум 5 знаков'),
 });
 
-const loginState = {
-  authorization: true,
-};
-
 const ErrorBlock = () => {
-  const { authorization } = loginState;
+  const { statusState } = useContext(StatusContext);
+  const { authorization } = statusState;
   const classError = cn('mt-0', {
     'd-none': authorization,
     'd-block': !authorization,
   });
   return <div className={classError}>Неверное имя пользователя или пароль</div>;
 };
-// надо подумать - блок пояляется с запозданием
 
 const Loginpage = () => {
-  const { statusState, setValid } = useContext(StatusContext);
-  console.log(statusState);
+  const { setActive, accessYes, accessNo } = useContext(StatusContext);
+  const navigate = useNavigate();
+
   return (
     <Formik
       validationSchema={LoginSchema}
@@ -39,14 +36,13 @@ const Loginpage = () => {
         axios
           .post('/api/v1/login', values)
           .then((response) => {
-            const { username, token } = response.data;
-            localStorage.setItem('username', username);
-            localStorage.setItem('token', token);
+            accessYes();
+            setActive();
+            Object.assign(localStorage, response.data);
           })
-          .then(() => setValid())
-          .then(() => console.log(statusState))
+          .then(() => navigate('/'))
           .catch((error) => {
-            loginState.authorization = false;
+            accessNo();
           });
         resetForm();
       }}>
@@ -93,8 +89,8 @@ const Loginpage = () => {
 
             <div className="row justify-content-center mb-3">
               <span className="col-auto">Нет аккаунта?</span>
-              <Link to="/" className="col-auto">
-                Зарегистрироваться
+              <Link to="/loginpage" className="col-auto">
+                Зарегистрироваться(на loginpage)
               </Link>
             </div>
           </div>

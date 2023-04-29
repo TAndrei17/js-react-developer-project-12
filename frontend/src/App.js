@@ -1,27 +1,32 @@
-import { Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 // import logo from './logo.svg';
 // import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Mainpage } from './pages/mainpage';
 import { Loginpage } from './pages/loginpage';
 import { Notfoundpage } from './pages/notfoundpage';
+import RequireAuth from './hoc/RequireAuth.jsx';
 import StatusContext from './context/index.js';
 
 const statusState = {
-  statusSession: 'inactive',
-  // statusTwo: 'active',
+  authorization: true,
+  login: 'inactive',
 };
 
 const StatusProvider = ({children}) => {
-  const { statusSession } = statusState;
-  const [status, setStatus] = useState(statusSession);
-  const setValid = () => setStatus(statusState.statusSession = 'active');
-  const setInValid = () => setStatus(statusState.statusSession = 'inactive');
+  const { authorization, login } = statusState;
+  const [session, setSession] = useState(login);
+  const setActive = () => setSession(statusState.login = 'active');
+  const setInactive = () => setSession(statusState.login = 'inactive');
+  const [access, setAccess] = useState(authorization);
+  const accessYes = () => setAccess(statusState.authorization = true);
+  const accessNo = () => setAccess(statusState.authorization = false);
+  const contextStatus = { statusState, session, setActive, setInactive, access, accessYes, accessNo };
 
   return (
-    <StatusContext.Provider value={{ statusState, status, setValid, setInValid }}>
+    <StatusContext.Provider value={contextStatus}>
       {children}
     </StatusContext.Provider>
   );
@@ -33,7 +38,11 @@ function App() {
   return (
     <StatusProvider>
     <Routes>
-      <Route path="/" element={<Mainpage />} />
+      <Route path="/" element={
+        <RequireAuth>
+          <Mainpage />
+        </RequireAuth>
+      } />
       <Route path="/loginpage" element={<Loginpage />} />
       <Route path="*" element={<Notfoundpage />} />
     </Routes>
