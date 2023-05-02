@@ -4,13 +4,11 @@ const MessagesBlock = () => {
   return (
     <div className="col-8 border border-primary">
       <div className="row h-100">
-        <div className="col-12 text-primary border border-danger">
-          Сообщения
-        </div>
-        <div className="col-12 h-75 m-auto text-primary border border-danger">
+        <div className="col-12 text-primary">Сообщения</div>
+        <div className="col-12 h-75 m-auto text-primary">
           Место для сообщений
         </div>
-        <div className="col-12 text-primary border border-danger">
+        <div className="col-12 text-primary align-items-end">
           Место для инпута
         </div>
       </div>

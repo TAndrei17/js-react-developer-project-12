@@ -53,7 +53,7 @@ const Mainpage = () => {
       );
 
       const { currentChannelId } = data;
-      dispatch(currChannelActions.setChannel({ currentChannelId }));
+      dispatch(currChannelActions.setChannel(currentChannelId));
     };
 
     fetchData();
@@ -62,7 +62,7 @@ const Mainpage = () => {
   return (
     <>
       <div className="container vh-100">
-        <div className="row h-25 text-center mb-3 mt-3 border border-primary">
+        <div className="row text-center mb-3 mt-3">
           <h1 className="col-8 h3 m-auto text-primary">
             Добро пожаловать в Мелеграм-Чат!
           </h1>

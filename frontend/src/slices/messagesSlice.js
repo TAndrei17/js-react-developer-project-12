@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, current } from '@reduxjs/toolkit';
 
 const initialState = {
     entities: {},
@@ -13,6 +13,7 @@ const messagesSlice = createSlice({
         const { entities, ids } = payload;
         state.entities = entities;
         state.ids = ids;
+        console.log(current(state));
       },
     },
 });
