@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import logo from './logo.svg';
 // import './App.css';
@@ -9,6 +10,7 @@ import { Loginpage } from './pages/loginpage';
 import { Notfoundpage } from './pages/notfoundpage';
 import RequireAuth from './hoc/RequireAuth.jsx';
 import StatusContext from './context/index.js';
+import store from './slices/index.js';
 
 const statusState = {
   authorization: true,
@@ -37,15 +39,17 @@ function App() {
     
   return (
     <StatusProvider>
-    <Routes>
-      <Route path="/" element={
-        <RequireAuth>
-          <Mainpage />
-        </RequireAuth>
-      } />
-      <Route path="/loginpage" element={<Loginpage />} />
-      <Route path="*" element={<Notfoundpage />} />
-    </Routes>
+      <Provider store={store}>
+        <Routes>
+          <Route path="/" element={
+            <RequireAuth>
+              <Mainpage />
+            </RequireAuth>
+          } />
+          <Route path="/loginpage" element={<Loginpage />} />
+          <Route path="*" element={<Notfoundpage />} />
+        </Routes>
+      </Provider>
     </StatusProvider>
   );
 }
