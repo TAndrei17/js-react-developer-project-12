@@ -52,32 +52,27 @@ const Mainpage = () => {
         })
       );
 
-      const { currentChannelId } = data;
-      dispatch(currChannelActions.setChannel(currentChannelId));
+      dispatch(currChannelActions.setChannel(data.currentChannelId));
     };
 
     fetchData();
   });
 
   return (
-    <>
-      <div className="container vh-100">
-        <div className="row text-center mb-3 mt-3">
-          <h1 className="col-8 h3 m-auto text-primary">
-            Добро пожаловать в Мелеграм-Чат!
-          </h1>
-          <div className="col h3 m-auto">
-            <Link to="/loginpage" className="btn btn-primary">
-              Выйти
-            </Link>
-          </div>
-        </div>
-        <div className="row h-75">
-          <ChannelsBlock />
-          <MessagesBlock />
+    <div className="container vh-100">
+      <div className="row mb-3 mt-3">
+        <h1 className="col-auto me-auto h3 text-primary">Мелеграм-Чат</h1>
+        <div className="col-auto h3">
+          <Link to="/loginpage" className="btn btn-primary">
+            Выйти
+          </Link>
         </div>
       </div>
-    </>
+      <div className="row h-75">
+        <ChannelsBlock />
+        <MessagesBlock />
+      </div>
+    </div>
   );
 };
 
