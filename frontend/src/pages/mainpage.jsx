@@ -9,9 +9,21 @@ import { actions as currChannelActions } from '../slices/channelSlice.js';
 
 import ChannelsBlock from './channelsBlock.jsx';
 import MessagesBlock from './messagesBlock.jsx';
+import { socket } from '../App.js';
 
 const Mainpage = () => {
   const dispatch = useDispatch();
+
+  // body = { body: "new message", channelId: 7, id: 8, username: "admin" }
+  // id = "message8"
+  socket.on('newMessage', (payload) => {
+    dispatch(
+      messagesActions.addMessage({
+        body: payload,
+        id: `message${payload.id}`,
+      })
+    );
+  });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,33 +34,33 @@ const Mainpage = () => {
       });
 
       const normalizeData = {
-        channels: {},
-        messages: {},
+        allChannels: {},
+        allMessages: {},
       };
 
       data.channels.forEach((channel) => {
-        const { channels } = normalizeData;
+        const { allChannels } = normalizeData;
         const nameProperty = `channel${channel.id}`;
-        channels[nameProperty] = channel;
+        allChannels[nameProperty] = channel;
       });
 
       data.messages.forEach((message) => {
-        const { messages } = normalizeData;
+        const { allMessages } = normalizeData;
         const nameProperty = `message${message.id}`;
-        messages[nameProperty] = message;
+        allMessages[nameProperty] = message;
       });
 
       dispatch(
         channelsActions.addChannels({
-          entities: normalizeData.channels,
-          ids: Object.keys(normalizeData.channels),
+          entities: normalizeData.allChannels,
+          ids: Object.keys(normalizeData.allChannels),
         })
       );
 
       dispatch(
         messagesActions.addMessages({
-          entities: normalizeData.messages,
-          ids: Object.keys(normalizeData.messages),
+          entities: normalizeData.allMessages,
+          ids: Object.keys(normalizeData.allMessages),
         })
       );
 

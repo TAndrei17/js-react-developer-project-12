@@ -11,6 +11,8 @@ import { Notfoundpage } from './pages/notfoundpage';
 import RequireAuth from './hoc/RequireAuth.jsx';
 import StatusContext from './context/index.js';
 import store from './slices/index.js';
+import { io } from 'socket.io-client';
+
 
 const statusState = {
   authorization: true,
@@ -34,9 +36,10 @@ const StatusProvider = ({children}) => {
   );
 };
 
+export const socket = io("ws://localhost:3000");
 
 function App() {
-    
+
   return (
     <StatusProvider>
       <Provider store={store}>
