@@ -64,7 +64,9 @@ const MessagesBlock = () => {
               { channelId: currentChannel, username: localStorage.username },
               values
             );
-            socket.emit('newMessage', newMessage);
+            socket.emit('newMessage', newMessage, (response) => {
+              console.log(response.status);
+            });
             resetForm();
           }}>
           <div className="col-12">
