@@ -68,7 +68,8 @@ const Mainpage = () => {
     };
 
     fetchData();
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="container vh-100">

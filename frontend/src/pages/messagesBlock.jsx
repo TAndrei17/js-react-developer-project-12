@@ -21,7 +21,7 @@ const MessagesBlock = () => {
     return acc;
   }, '');
 
-  const showCurrentChannel = `#${getCurrentChannelName}`;
+  const showCurrentChannel = `# ${getCurrentChannelName}`;
 
   const messages = useSelector((state) => {
     const getMessages = state.messagesReducer.ids.map(
