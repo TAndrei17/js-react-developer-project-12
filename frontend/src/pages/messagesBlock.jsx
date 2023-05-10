@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import { socket } from '../App.js';
 import { Formik, Form, Field } from 'formik';
+import MessagesBlockShow from './messagesBlockShow.jsx';
 
 const MessagesBlock = () => {
   const currentChannel = useSelector(
@@ -36,17 +37,8 @@ const MessagesBlock = () => {
 
   const showMessagesNumber = `Сообщений: ${getMessagesNumber.length}`;
 
-  const showMessages = messages.map((message) => {
-    if (message.channelId !== currentChannel) {
-      return null;
-    }
-
-    return (
-      <div key={message.id}>
-        {message.username}: {message.body}
-      </div>
-    );
-  });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // useEffect(() => <MessagesBlockShow messages={messages} />, [currentChannel]);
 
   return (
     <div className="col-9 border border-primary rounded">
@@ -56,7 +48,7 @@ const MessagesBlock = () => {
           <br />
           {showMessagesNumber}
         </div>
-        <div className="col-12 h-75">{showMessages}</div>
+        <MessagesBlockShow messages={messages} />
         <Formik
           initialValues={{ body: '' }}
           onSubmit={(values, { resetForm }) => {

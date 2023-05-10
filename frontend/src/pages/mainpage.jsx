@@ -14,17 +14,6 @@ import { socket } from '../App.js';
 const Mainpage = () => {
   const dispatch = useDispatch();
 
-  // body = { body: "new message", channelId: 7, id: 8, username: "admin" }
-  // id = "message8"
-  socket.on('newMessage', (payload) => {
-    dispatch(
-      messagesActions.addMessage({
-        body: payload,
-        id: `message${payload.id}`,
-      })
-    );
-  });
-
   useEffect(() => {
     const fetchData = async () => {
       const { data } = await axios.get('/api/v1/data', {
@@ -68,8 +57,18 @@ const Mainpage = () => {
     };
 
     fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  });
+
+  // body = { body: "new message", channelId: 7, id: 8, username: "admin" }
+  // id = "message8"
+  socket.on('newMessage', (payload) => {
+    dispatch(
+      messagesActions.addMessage({
+        body: payload,
+        id: `message${payload.id}`,
+      })
+    );
+  });
 
   return (
     <div className="container vh-100">

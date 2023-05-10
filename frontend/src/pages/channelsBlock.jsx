@@ -1,4 +1,3 @@
-import { useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { actions as currChannelActions } from '../slices/channelSlice.js';
 
@@ -16,18 +15,16 @@ const ChannelsBlock = () => {
     return getChannels;
   });
 
-  const channelsList = useRef(null);
   const onChannelClick = (event) => {
     event.preventDefault();
     const { target } = event;
-    console.log(target.id);
-    dispatch(currChannelActions.setChannel(target.id));
+    dispatch(currChannelActions.setChannel(Number(target.id)));
   };
 
   const showChannels = channels.map((channel) => {
     if (channel.id === currentChannel) {
       return (
-        <li key={channel.id} className="nav-item w-100">
+        <li key={channel.id} className="nav-item active w-100">
           <button
             type="button"
             id={channel.id}
@@ -62,9 +59,8 @@ const ChannelsBlock = () => {
         <button className="col m-2 p-0 btn btn-primary text-center">+</button>
         <ul
           id="channels-box"
-          ref={channelsList}
           onClick={onChannelClick}
-          className="nav flex-column nav-pills nav-fill px-2 mb-3 overflow-auto h-100 d-block">
+          className="nav nav-pills nav-fill px-2 mb-2 overflow-auto h-100 d-block">
           {showChannels}
         </ul>
       </div>
