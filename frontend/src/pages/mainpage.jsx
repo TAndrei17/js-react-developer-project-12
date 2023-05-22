@@ -70,6 +70,19 @@ const Mainpage = () => {
     );
   });
 
+  socket.on('newChannel', (payload) => {
+    dispatch(
+      channelsActions.addChannel({
+        body: payload,
+        id: `channel${payload.id}`,
+      })
+    );
+  });
+
+  socket.on('newChannel', (payload) => {
+    dispatch(currChannelActions.setChannel(payload.id));
+  });
+
   return (
     <div className="container vh-100">
       <div className="row mb-3 mt-3">
