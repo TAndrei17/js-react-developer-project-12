@@ -46,7 +46,7 @@ const Loginpage = () => {
           });
         resetForm();
       }}>
-      {({ errors, touched }) => (
+      {({ errors, touched, isSubmitting }) => (
         <div className="container h-100 mt-3">
           <div className="row justify-content-center align-content-center h-100">
             <h1 className="col-12 text-center text-primary">Войти</h1>
@@ -82,7 +82,10 @@ const Loginpage = () => {
               </div>
               <ErrorBlock />
 
-              <button type="submit" className="w-100 mt-3 mb-3 btn btn-primary">
+              <button
+                type="submit"
+                className="w-100 mt-3 mb-3 btn btn-primary"
+                disabled={isSubmitting}>
                 Войти
               </button>
             </Form>

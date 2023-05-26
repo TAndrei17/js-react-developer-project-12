@@ -1,5 +1,5 @@
 import { createSlice, current } from '@reduxjs/toolkit';
-// import { actions as channelsActions } from './slices/channelsSlice.js';
+import { actions as channelsActions } from './channelsSlice.js';
 
 
 
@@ -27,8 +27,21 @@ const messagesSlice = createSlice({
         console.log(current(state));
       }
     },
-    // extraReducers - нужно удалить все сообщения удаленного канала
-    // т.к. не использую адаптер, нужно вытаскивать ключ/значение и фильтовать
+    extraReducers: (builder) => {
+      builder.addCase(channelsActions.removeChannel, (state, action) => {
+        const { channelId } = action.payload;
+        const updatesMessages = Object.entries(state.entities).reduce((acc, [ id, message ]) => {
+          if (message.channelId !== channelId) {
+            acc[id] = message;
+          }
+          return acc;
+        }, {});
+        console.log(updatesMessages);
+        state.entities = updatesMessages;  
+        state.ids = Object.keys(updatesMessages).filter((id) => id !== channelId);
+        console.log(current(state));
+      })
+    },
 });
 
 export const { actions } = messagesSlice;

@@ -1,30 +1,19 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { actions as currChannelActions } from '../../slices/channelSlice.js';
+import { useSelector } from 'react-redux';
 import cn from 'classnames';
 
 import RemovableChannel from './removable_channel.jsx';
 import NoRemovableChannel from './no_removable_channel.jsx';
 
 const ChannelsList = (props) => {
-  const dispatch = useDispatch();
-
   const currentChannel = useSelector(
     (state) => state.channelReducer.currentChannel
   );
-
-  const onClickChooseChannel = (event) => {
-    event.preventDefault();
-    const { target } = event;
-    // console.log(target);
-    dispatch(currChannelActions.setChannel(Number(target.id)));
-  };
 
   return (
     <>
       <ul
         id="channels-box"
-        className="nav nav-pills nav-fill px-2 mb-2 d-block overflow-auto"
-        onClick={onClickChooseChannel}>
+        className="nav nav-pills nav-fill px-2 mb-2 d-block overflow-auto">
         {props.channels.map((channel) => {
           const setClasses1 = cn('btn', 'rounded-0', 'w-100', 'text-start', {
             active: channel.id === currentChannel,

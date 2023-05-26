@@ -22,7 +22,7 @@ const DeleteChannel = (props) => {
 
   return (
     <>
-      <Button id={props.id} onClick={handleShow} className="dropdown-item">
+      <Button onClick={handleShow} className="dropdown-item">
         Удалить
       </Button>
 
@@ -37,7 +37,6 @@ const DeleteChannel = (props) => {
             Отменить
           </Button>
           <Button
-            id={props.id}
             type="button"
             variant="primary"
             onClick={(event) => {

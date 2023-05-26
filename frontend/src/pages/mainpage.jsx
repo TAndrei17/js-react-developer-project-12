@@ -70,6 +70,7 @@ const Mainpage = () => {
     );
   });
 
+  // { id: 6, name: "new channel", removable: true }
   socket.on('newChannel', (payload) => {
     dispatch(
       channelsActions.addChannel({
@@ -83,8 +84,25 @@ const Mainpage = () => {
     dispatch(currChannelActions.setChannel(payload.id));
   });
 
+  // { id: 6 }
   socket.on('removeChannel', (payload) => {
-    dispatch(channelsActions.RemoveChannel({ id: `channel${payload.id}` }));
+    dispatch(
+      channelsActions.removeChannel({
+        id: `channel${payload.id}`,
+        channelId: payload.id,
+      })
+    );
+    dispatch(currChannelActions.setChannel(1));
+  });
+
+  // { id: 7, name: "new name channel", removable: true }
+  socket.on('renameChannel', (payload) => {
+    dispatch(
+      channelsActions.addChannel({
+        body: payload,
+        id: `channel${payload.id}`,
+      })
+    );
   });
 
   return (

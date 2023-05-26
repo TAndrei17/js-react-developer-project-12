@@ -12,9 +12,9 @@ const ChannelsBlock = () => {
   });
 
   return (
-    <div className="col-3 text-primary border border-primary rounded">
-      <div className="row">
-        <div className="col-10 mt-2 mb-2">
+    <div className="col-3 border border-primary rounded">
+      <div className="row mt-2 mb-2">
+        <div className="col-10 h5 text-primary mt-2 mb-2">
           <strong>Каналы</strong>
         </div>
         <CreateNewChannel className="col" />

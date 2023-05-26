@@ -7,7 +7,7 @@ const MessagesBlockShow = (props) => {
 
   return (
     <>
-      <div className="col-12 h-75">
+      <div className="col-12 h-75 overflow-auto">
         {props.messages.map((message) => {
           if (message.channelId !== currentChannel) {
             return null;
