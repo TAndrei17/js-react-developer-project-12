@@ -22,7 +22,12 @@ const channelsSlice = createSlice({
           state.ids.push(id);
         }
         console.log(current(state));
-      }
+      },
+      RemoveChannel(state, {payload}) {
+        const { id } = payload;
+        delete state.entities[id];
+        state.ids = state.ids.filter((channelId) => channelId !== id);
+      },
     },
 });
 

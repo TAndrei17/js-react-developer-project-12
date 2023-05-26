@@ -1,3 +1,5 @@
+import DeleteChannel from '../modalWindows/channel_delete';
+
 const RemovableChannel = (props) => {
   // both buttons belong to the same channel
   // that reason they have same id
@@ -7,7 +9,7 @@ const RemovableChannel = (props) => {
       <button
         id={props.id}
         type="button"
-        className="btn rounded-0 w-100 text-start"
+        className={props.classes1}
         name={props.name}>
         <span className="me-1">#</span>
         {props.name}
@@ -16,7 +18,7 @@ const RemovableChannel = (props) => {
       <button
         id={props.id}
         type="button"
-        className="btn dropdown-toggle dropdown-toggle-split"
+        className={props.classes2}
         data-bs-toggle="dropdown"
         aria-expanded="false">
         <span className="visually-hidden">
@@ -25,7 +27,7 @@ const RemovableChannel = (props) => {
       </button>
       <ul className="dropdown-menu">
         <li>
-          <button className="dropdown-item">Удалить</button>
+          <DeleteChannel id={props.id} />
         </li>
         <li>
           <button className="dropdown-item">Изменить</button>

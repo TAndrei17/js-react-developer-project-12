@@ -83,6 +83,10 @@ const Mainpage = () => {
     dispatch(currChannelActions.setChannel(payload.id));
   });
 
+  socket.on('removeChannel', (payload) => {
+    dispatch(channelsActions.RemoveChannel({ id: `channel${payload.id}` }));
+  });
+
   return (
     <div className="container vh-100">
       <div className="row mb-3 mt-3">
