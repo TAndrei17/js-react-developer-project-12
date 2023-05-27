@@ -37,7 +37,7 @@ const StatusProvider = ({children}) => {
   );
 };
 
-export const socket = io("ws://localhost:3000");
+export const socket = io('https://js-react-developer-project-12-production-1e82.up.railway.app/');
 
 function App() {
 
