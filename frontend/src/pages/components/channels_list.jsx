@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
 import cn from 'classnames';
 
-import RemovableChannel from './removable_channel.jsx';
-import NoRemovableChannel from './no_removable_channel.jsx';
+import RemovableChannel from './channel_removable.jsx';
+import NoRemovableChannel from './channel_no_removable.jsx';
 
 const ChannelsList = (props) => {
   const currentChannel = useSelector(

@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 
-import CreateNewChannel from './modalWindows/channel_create.jsx';
-import ChannelsList from './components/channels_list.jsx';
+import CreateNewChannel from '../modalWindows/channel_create.jsx';
+import ChannelsList from './channels_list.jsx';
 
 const ChannelsBlock = () => {
   const channels = useSelector((state) => {

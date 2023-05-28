@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
-import { socket } from '../App.js';
+import { socket } from '../../App.js';
 import { Formik, Form, Field } from 'formik';
-import MessagesBlockShow from './messagesBlockShow.jsx';
+import MessagesBlockShow from './messages_block_show.jsx';
 
 const MessagesBlock = () => {
   const currentChannel = useSelector(

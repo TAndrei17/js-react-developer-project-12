@@ -4,7 +4,7 @@ const RequireAuth = ({ children }) => {
   const auth = localStorage.hasOwnProperty('token');
 
   if (!auth) {
-    return <Navigate to="/loginpage" />;
+    return <Navigate to="/login" />;
   }
 
   return children;

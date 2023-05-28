@@ -1,5 +1,6 @@
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
 
@@ -7,12 +8,14 @@ import { actions as channelsActions } from '../slices/channelsSlice.js';
 import { actions as messagesActions } from '../slices/messagesSlice.js';
 import { actions as currChannelActions } from '../slices/channelSlice.js';
 
-import ChannelsBlock from './channelsBlock.jsx';
-import MessagesBlock from './messagesBlock.jsx';
+import ChannelsBlock from './components/channels_block.jsx';
+import MessagesBlock from './components/messages_block.jsx';
+import Header from './components/header.jsx';
 import { socket } from '../App.js';
 
 const Mainpage = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -105,21 +108,28 @@ const Mainpage = () => {
     );
   });
 
+  const handleOnClick = (e) => {
+    e.preventDefault();
+    navigate('/login');
+    localStorage.clear();
+  };
+
   return (
-    <div className="container vh-100">
-      <div className="row mb-3 mt-3">
-        <h1 className="col-auto me-auto h3 text-primary">Мелеграм-Чат</h1>
+    <>
+      <Header>
         <div className="col-auto h3">
-          <Link to="/loginpage" className="btn btn-primary">
+          <button className="btn btn-primary" onClick={handleOnClick}>
             Выйти
-          </Link>
+          </button>
+        </div>
+      </Header>
+      <div className="container vh-100">
+        <div className="row h-75">
+          <ChannelsBlock />
+          <MessagesBlock />
         </div>
       </div>
-      <div className="row h-75">
-        <ChannelsBlock />
-        <MessagesBlock />
-      </div>
-    </div>
+    </>
   );
 };
 

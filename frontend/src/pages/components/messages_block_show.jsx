@@ -14,7 +14,7 @@ const MessagesBlockShow = (props) => {
           }
 
           return (
-            <div key={message.id}>
+            <div key={message.id} className="mb-1 text-dark">
               {message.username}: {message.body}
             </div>
           );

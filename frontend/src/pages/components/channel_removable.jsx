@@ -1,8 +1,8 @@
 import { useDispatch } from 'react-redux';
 import { actions as currChannelActions } from '../../slices/channelSlice.js';
 
-import DeleteChannel from '../modalWindows/channel_delete';
-import ChangeChannel from '../modalWindows/channel.change';
+import DeleteChannel from '../modalWindows/channel_delete.jsx';
+import ChangeChannel from '../modalWindows/channel.change.jsx';
 
 const RemovableChannel = (props) => {
   const dispatch = useDispatch();
