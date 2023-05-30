@@ -18,7 +18,6 @@ const DeleteChannel = (props) => {
   };
 
   const id = props.id;
-  // console.log(id);
 
   return (
     <>
@@ -38,7 +37,7 @@ const DeleteChannel = (props) => {
           </Button>
           <Button
             type="button"
-            variant="primary"
+            variant="danger"
             onClick={(event) => {
               event.preventDefault();
               deleteChannel({ id });

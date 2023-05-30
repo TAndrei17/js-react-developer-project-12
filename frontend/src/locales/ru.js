@@ -41,9 +41,20 @@ const rusInterface = {
       ariaLabel: 'Новое сообщение',
       fieldTitle: 'Привет, мир!',
       messageSend: 'Отправить',
-    }
-    // дальше модальные окна
-
+    },
+    modalWindows: {
+      switchList: 'Переключатель выпадающего списка',
+      buttonChange: 'Переименовать',
+      buttonDelete: 'Удалить',
+      headerAddChannel: 'Добавить канал',
+      headerChangeChannel: 'Переименовать канал',
+      headerRemoveChannel: 'Удалить канал',
+      formLabel: 'Имя канала',
+      errorMessage: 'Должно быть уникальным!',
+      questionDelete: 'Уверены?',
+      buttonCancel: 'Отменить',
+      buttonSend: 'Отправить',      
+    },
   }
 };
 

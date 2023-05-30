@@ -44,9 +44,9 @@ const MessagesBlock = () => {
     <div className="col-9 border border-primary rounded">
       <div className="row h-100">
         <div className="col-12 mt-1 mb-1 text-primary">
-          {showCurrentChannel}
+          <span className="h6">{showCurrentChannel}</span>
           <br />
-          {showMessagesNumber}
+          <span>{showMessagesNumber}</span>
         </div>
         <MessagesBlockShow messages={messages} />
         <Formik
