@@ -1,16 +1,20 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+
+import { Formik, Form, Field } from 'formik';
+
+import { socket } from '../../App.js';
+
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-import { socket } from '../../App.js';
-import { Formik, Form, Field } from 'formik';
-
 const ChangeChannel = (props) => {
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const { t } = useTranslation('translation', { keyPrefix: 'modalWindows' });
 
   // it's for a validation, get all channels from state
   const channels = useSelector((state) => {
@@ -26,7 +30,7 @@ const ChangeChannel = (props) => {
     const checkChannels = channels.filter((channel) => channel.name === value);
     if (checkChannels.length > 0) {
       // console.log(checkChannels.length);
-      error = 'Должно быть уникальным!';
+      error = t('errorMessage');
     }
     return error;
   }
@@ -36,12 +40,12 @@ const ChangeChannel = (props) => {
   return (
     <>
       <Button onClick={handleShow} className="dropdown-item">
-        Переименовать
+        {t('buttonChange')}
       </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header>
-          <Modal.Title>Переименовать канал</Modal.Title>
+          <Modal.Title>{t('headerChangeChannel')}</Modal.Title>
         </Modal.Header>
         <Formik
           validateOnChange={false}
@@ -72,15 +76,15 @@ const ChangeChannel = (props) => {
                   <div className="text-danger">{errors.name}</div>
                 )}
                 <label className="visually-hidden" htmlFor="name">
-                  Имя канала
+                  {t('formLabel')}
                 </label>
               </Modal.Body>
               <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
-                  Отменить
+                  {t('buttonCancel')}
                 </Button>
                 <Button type="submit" variant="primary" disabled={isSubmitting}>
-                  Отправить
+                  {t('buttonSend')}
                 </Button>
               </Modal.Footer>
             </Form>

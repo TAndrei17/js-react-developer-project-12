@@ -2,20 +2,23 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 
 import { actions as channelsActions } from '../slices/channelsSlice.js';
 import { actions as messagesActions } from '../slices/messagesSlice.js';
 import { actions as currChannelActions } from '../slices/channelSlice.js';
+import { socket } from '../App.js';
 
 import ChannelsBlock from './components/channels_block.jsx';
 import MessagesBlock from './components/messages_block.jsx';
 import Header from './components/header.jsx';
-import { socket } from '../App.js';
+import ButtonsLng from './components/buttons_languages.jsx';
 
 const Mainpage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { t } = useTranslation('translation', { keyPrefix: 'mainPage' });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -115,11 +118,12 @@ const Mainpage = () => {
   };
 
   return (
-    <>
+    <div>
       <Header>
         <div className="col-auto h3">
+          <ButtonsLng />
           <button className="btn btn-primary" onClick={handleOnClick}>
-            Выйти
+            {t('logoutButton')}
           </button>
         </div>
       </Header>
@@ -129,7 +133,7 @@ const Mainpage = () => {
           <MessagesBlock />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

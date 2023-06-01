@@ -6,6 +6,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.js';
 // import logo from './logo.svg';
 // import './App.css';
 
+
 import { Mainpage } from './pages/main_page';
 import { Loginpage } from './pages/login_page';
 import { Signuppage } from './pages/signup_page';

@@ -1,5 +1,7 @@
-const rusInterface = {
+const ru = {
   translation: {
+    headerPage: 'Hexlet Chat',
+    language: 'RU',
     loginPage: {
       header: 'Войти',
       nic: 'Ваш ник',
@@ -21,6 +23,7 @@ const rusInterface = {
       passwordRequire: 'Пожалуйста, укажите пароль',
       passwordMin: 'Не менее {{signs}} символов',
       confirmPassword: 'Подтвердите пароль',
+      confirmPasswordError: 'Пожалуйста, подтвердите пароль',
       equalRequire: 'Пароли должны совпадать',
       signupButton: 'Зарегистрироваться',
       formSignUpError: 'Такой пользователь уже существует',
@@ -45,7 +48,7 @@ const rusInterface = {
     modalWindows: {
       switchList: 'Переключатель выпадающего списка',
       buttonChange: 'Переименовать',
-      buttonDelete: 'Удалить',
+      buttonRemove: 'Удалить',
       headerAddChannel: 'Добавить канал',
       headerChangeChannel: 'Переименовать канал',
       headerRemoveChannel: 'Удалить канал',
@@ -55,7 +58,8 @@ const rusInterface = {
       buttonCancel: 'Отменить',
       buttonSend: 'Отправить',      
     },
-  }
+  },
 };
 
-export default rusInterface;
+export default ru;
+

@@ -1,16 +1,17 @@
 import { useDispatch } from 'react-redux';
 import { actions as currChannelActions } from '../../slices/channelSlice.js';
+import { useTranslation } from 'react-i18next';
 
 import DeleteChannel from '../modalWindows/channel_delete.jsx';
-import ChangeChannel from '../modalWindows/channel.change.jsx';
+import ChangeChannel from '../modalWindows/channel_change.jsx';
 
 const RemovableChannel = (props) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation('translation', { keyPrefix: 'modalWindows' });
 
   const onClickChooseChannel = (event) => {
     event.preventDefault();
     const { target } = event;
-    // console.log(target);
     dispatch(currChannelActions.setChannel(Number(target.id)));
   };
 
@@ -32,9 +33,7 @@ const RemovableChannel = (props) => {
         className={props.classes2}
         data-bs-toggle="dropdown"
         aria-expanded="false">
-        <span className="visually-hidden">
-          Переключатель выпадающего списка
-        </span>
+        <span className="visually-hidden">{t('switchList')}</span>
       </button>
       <ul className="dropdown-menu">
         <li>

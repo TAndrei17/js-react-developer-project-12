@@ -7,7 +7,6 @@ const NoRemovableChannel = (props) => {
   const onClickChooseChannel = (event) => {
     event.preventDefault();
     const { target } = event;
-    // console.log(target);
     dispatch(currChannelActions.setChannel(Number(target.id)));
   };
 

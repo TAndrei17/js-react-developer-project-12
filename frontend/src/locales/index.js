@@ -1,7 +1,7 @@
-import rusInterface from "./ru";
-import engInterface from "./en";
-import spInterface from "./sp";
+import ru from './ru.js';
+import en from './en.js';
+import sp from './sp.js';
 
-const resourses = { rusInterface, engInterface, spInterface };
+const resources = { ru, en, sp };
 
-export default resourses;
+export default resources;

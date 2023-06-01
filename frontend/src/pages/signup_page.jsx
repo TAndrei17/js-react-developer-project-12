@@ -1,46 +1,55 @@
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+
 import { Formik, Form, Field } from 'formik';
 import * as yup from 'yup';
 import axios from 'axios';
 import cn from 'classnames';
+
 import StatusContext from '../context/index.js';
 import Header from './components/header.jsx';
+import ButtonsLng from './components/buttons_languages.jsx';
+import i18n from '../i18next.js';
 
 const LoginSchema = yup.object().shape({
   username: yup
     .string()
     .trim()
-    .required('Пожалуйста, укажите имя пользователя')
-    .min(3, 'От 3 до 20 символов'),
+    .required(i18n.t('signUpPage.userNameRequire'))
+    .min(3, i18n.t('signUpPage.userNameMin')),
   password: yup
     .string()
-    .required('Пожалуйста, укажите пароль')
-    .min(6, 'Не менее 6 символов'),
+    .required(i18n.t('signUpPage.passwordRequire'))
+    .min(6, i18n.t('signUpPage.passwordMin', { signs: 6 })),
   confirm_password: yup
     .string()
-    .required('Пожалуйста, подтвердите пароль')
-    .oneOf([yup.ref('password'), null], 'Пароли должны совпадать'),
+    .required(i18n.t('signUpPage.confirmPasswordError'))
+    .oneOf([yup.ref('password'), null], i18n.t('signUpPage.equalRequire')),
 });
 
 const ErrorBlock = () => {
   const { statusState } = useContext(StatusContext);
+  const { t } = useTranslation('translation', { keyPrefix: 'signUpPage' });
   const { authorization } = statusState;
 
   const classError = cn('mt-0', {
     'd-none': authorization,
     'd-block': !authorization,
   });
-  return <div className={classError}>Такой пользователь уже существует</div>;
+  return <div className={classError}>{t('formSignUpError')}</div>;
 };
 
 const Signuppage = () => {
   const { setActive, accessYes, accessNo } = useContext(StatusContext);
+  const { t } = useTranslation('translation', { keyPrefix: 'signUpPage' });
   const navigate = useNavigate();
 
   return (
     <>
-      <Header />
+      <Header>
+        <ButtonsLng />
+      </Header>
       <Formik
         validationSchema={LoginSchema}
         initialValues={{ username: '', password: '', confirm_password: '' }}
@@ -63,14 +72,13 @@ const Signuppage = () => {
         {({ errors, touched, isSubmitting }) => (
           <div className="container h-100 mt-3">
             <div className="row justify-content-center align-content-center h-100">
-              <h1 className="col-12 text-center text-primary">Регистрация</h1>
+              <h1 className="col-12 text-center text-primary">{t('header')}</h1>
               <Form className="col-12 col-md-6 mt-3">
                 <div className="form-floating mb-3">
                   <Field
-                    autoFocus
                     id="username"
                     name="username"
-                    placeholder="От 3 до 20 символов"
+                    placeholder={t('userNameMin')}
                     autoComplete="username"
                     type="text"
                     required
@@ -79,14 +87,14 @@ const Signuppage = () => {
                   {errors.username && touched.username ? (
                     <div>{errors.username}</div>
                   ) : null}
-                  <label htmlFor="username">Имя пользователя</label>
+                  <label htmlFor="username">{t('userName')}</label>
                 </div>
 
                 <div className="form-floating mb-3">
                   <Field
                     id="password"
                     name="password"
-                    placeholder="Не менее 6 символов"
+                    placeholder={t('passwordMin', { signs: 6 })}
                     autoComplete="new-password"
                     type="password"
                     required
@@ -95,14 +103,14 @@ const Signuppage = () => {
                   {errors.password && touched.password ? (
                     <div>{errors.password}</div>
                   ) : null}
-                  <label htmlFor="password">Пароль</label>
+                  <label htmlFor="password">{t('password')}</label>
                 </div>
 
                 <div className="form-floating mb-3">
                   <Field
                     id="confirm_password"
                     name="confirm_password"
-                    placeholder="Пароли должны совпадать"
+                    placeholder={t('equalRequire')}
                     autoComplete="new-password"
                     type="password"
                     required
@@ -111,7 +119,9 @@ const Signuppage = () => {
                   {errors.confirm_password && touched.confirm_password ? (
                     <div>{errors.confirm_password}</div>
                   ) : null}
-                  <label htmlFor="confirm_password">Подтвердите пароль</label>
+                  <label htmlFor="confirm_password">
+                    {t('confirmPassword')}
+                  </label>
                 </div>
                 <ErrorBlock />
 
@@ -119,7 +129,7 @@ const Signuppage = () => {
                   type="submit"
                   className="w-100 mt-3 mb-3 btn btn-primary"
                   disabled={isSubmitting}>
-                  Войти
+                  {t('signupButton')}
                 </button>
               </Form>
             </div>
