@@ -5,6 +5,10 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 import { socket } from '../../App.js';
+import {
+  notifyRemoveSuccess,
+  notifyRemovedError,
+} from '../../popup_messages/messages.js';
 
 const DeleteChannel = (props) => {
   const [show, setShow] = useState(false);
@@ -15,7 +19,7 @@ const DeleteChannel = (props) => {
 
   const deleteChannel = (id) => {
     socket.emit('removeChannel', id, (response) => {
-      console.log(response.status);
+      response.status === 'ok' ? notifyRemoveSuccess() : notifyRemovedError();
       handleClose();
     });
   };

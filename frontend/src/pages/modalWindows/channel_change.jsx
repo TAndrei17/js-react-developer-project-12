@@ -5,6 +5,10 @@ import { useTranslation } from 'react-i18next';
 import { Formik, Form, Field } from 'formik';
 
 import { socket } from '../../App.js';
+import {
+  notifyRenameSuccess,
+  notifyRenameError,
+} from '../../popup_messages/messages.js';
 
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -55,7 +59,9 @@ const ChangeChannel = (props) => {
             const newName = Object.assign({ id }, values);
             console.log(newName);
             socket.emit('renameChannel', newName, (response) => {
-              console.log(response.status);
+              response.status === 'ok'
+                ? notifyRenameSuccess()
+                : notifyRenameError();
             });
             handleClose();
             resetForm();

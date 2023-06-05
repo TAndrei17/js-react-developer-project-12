@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.js';
+import 'react-toastify/dist/ReactToastify.min.css';
 // import logo from './logo.svg';
 // import './App.css';
 

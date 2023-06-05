@@ -5,6 +5,10 @@ import { useTranslation } from 'react-i18next';
 import { Formik, Form, Field } from 'formik';
 
 import { socket } from '../../App.js';
+import {
+  notifyCreateSuccess,
+  notifyCreateError,
+} from '../../popup_messages/messages.js';
 
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -59,7 +63,9 @@ const CreateNewChannel = () => {
           initialValues={{ name: '' }}
           onSubmit={(values, { resetForm }) => {
             socket.emit('newChannel', values, (response) => {
-              console.log(response.status);
+              response.status === 'ok'
+                ? notifyCreateSuccess()
+                : notifyCreateError();
             });
             handleClose();
             resetForm();

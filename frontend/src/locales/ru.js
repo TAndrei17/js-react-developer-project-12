@@ -56,7 +56,15 @@ const ru = {
       errorMessage: 'Должно быть уникальным!',
       questionDelete: 'Уверены?',
       buttonCancel: 'Отменить',
-      buttonSend: 'Отправить',      
+      buttonSend: 'Отправить',     
+    },
+    popupNotifications: {
+      channelCreated: 'Канал создан',
+      channelNoCreated: 'Не удалось создать канал',
+      channelRenamed: 'Канал переименован',
+      channelNoRenamed: 'Не удалось переименовать канал',
+      channelRemoved: 'Канал удален',
+      channelNoRemoved: 'Не удалось удалить канал',
     },
   },
 };

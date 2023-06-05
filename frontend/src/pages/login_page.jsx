@@ -10,14 +10,14 @@ import cn from 'classnames';
 import StatusContext from '../context/index.js';
 import Header from './components/header.jsx';
 import ButtonsLng from './components/buttons_languages.jsx';
-import i18n from '../i18next.js';
+import i18next from '../i18next.js';
 
 const LoginSchema = yup.object().shape({
-  username: yup.string().trim().required(i18n.t('loginPage.nicRequire')),
+  username: yup.string().trim().required(i18next.t('loginPage.nicRequire')),
   password: yup
     .string()
-    .required(i18n.t('loginPage.passwordRequire'))
-    .min(5, i18n.t('loginPage.passwordMin', { signs: 5 })), // по заданию 6?
+    .required(i18next.t('loginPage.passwordRequire'))
+    .min(5, i18next.t('loginPage.passwordMin', { signs: 5 })), // по заданию 6?
 });
 
 const ErrorBlock = () => {

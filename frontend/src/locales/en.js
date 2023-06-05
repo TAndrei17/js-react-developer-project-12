@@ -57,6 +57,14 @@ const en = {
       buttonCancel: 'Cancel',
       buttonSend: 'Submit',      
     },
+    popupNotifications: {
+      channelCreated: 'Channel is created',
+      channelNoCreated: 'Failed to create a channel',
+      channelRenamed: 'Channel is renamed',
+      channelNoRenamed: 'Failed to rename a channel',
+      channelRemoved: 'Channel is removed',
+      channelNoRemoved: 'Failed to remove a channel',
+    },
   },
 };
   

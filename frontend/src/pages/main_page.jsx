@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import { ToastContainer } from 'react-toastify';
 import axios from 'axios';
 
 import { actions as channelsActions } from '../slices/channelsSlice.js';
@@ -119,6 +120,7 @@ const Mainpage = () => {
 
   return (
     <div>
+      <ToastContainer />
       <Header>
         <div className="col-auto h3">
           <ButtonsLng />
