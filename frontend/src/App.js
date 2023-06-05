@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -8,41 +7,18 @@ import 'react-toastify/dist/ReactToastify.min.css';
 // import './App.css';
 
 
-import { Mainpage } from './pages/main_page';
-import { Loginpage } from './pages/login_page';
-import { Signuppage } from './pages/signup_page';
-import { Notfoundpage } from './pages/not_found_page';
+import { Mainpage } from './pages/main_page.jsx';
+import { Loginpage } from './pages/login_page.jsx';
+import { Signuppage } from './pages/signup_page.jsx';
+import { Notfoundpage } from './pages/not_found_page.jsx';
+
+import StatusProvider from './context/status_provider.js';
+import { statusState } from './context/index.js'
 
 import RequireAuth from './hoc/RequireAuth.jsx';
-import StatusContext from './context/index.js';
+
 import store from './slices/index.js';
 import { io } from 'socket.io-client';
-
-
-const statusState = {
-  authorization: true,
-  login: 'inactive',
-};
-
-const StatusProvider = ({children}) => {
-  const { authorization, login } = statusState;
-
-  const [session, setSession] = useState(login);
-  const setActive = () => setSession(statusState.login = 'active');
-  const setInactive = () => setSession(statusState.login = 'inactive');
-  
-  const [access, setAccess] = useState(authorization);
-  const accessYes = () => setAccess(statusState.authorization = true);
-  const accessNo = () => setAccess(statusState.authorization = false);
-  
-  const contextStatus = { statusState, session, setActive, setInactive, access, accessYes, accessNo };
-
-  return (
-    <StatusContext.Provider value={contextStatus}>
-      {children}
-    </StatusContext.Provider>
-  );
-};
 
 // for deploy on Railway
 // export const socket = io('https://js-react-developer-project-12-production-1e82.up.railway.app/');
@@ -71,3 +47,4 @@ function App() {
 }
 
 export default App;
+export { statusState };

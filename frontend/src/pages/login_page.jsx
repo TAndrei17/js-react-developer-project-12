@@ -25,7 +25,7 @@ const ErrorBlock = () => {
   const { t } = useTranslation('translation', { keyPrefix: 'loginPage' });
   const { authorization } = statusState;
 
-  const classError = cn('mt-0', {
+  const classError = cn('mt-0', 'text-danger', {
     'd-none': authorization,
     'd-block': !authorization,
   });
@@ -76,7 +76,7 @@ const Loginpage = () => {
                     className="form-control"
                   />
                   {errors.username && touched.username ? (
-                    <div>{errors.username}</div>
+                    <div className="text-danger">{errors.username}</div>
                   ) : null}
                   <label htmlFor="username">{t('nic')}</label>
                 </div>
@@ -91,7 +91,7 @@ const Loginpage = () => {
                     className="form-control"
                   />
                   {errors.password && touched.password ? (
-                    <div>{errors.password}</div>
+                    <div className="text-danger">{errors.password}</div>
                   ) : null}
                   <label htmlFor="password">{t('password')}</label>
                 </div>

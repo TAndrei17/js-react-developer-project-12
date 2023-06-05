@@ -1,10 +1,23 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import i18n from '../../i18next.js';
+import StatusContext from '../../context/index.js';
 
 function ButtonsLng() {
-  const [radioValue, setRadioValue] = useState('1');
+  const { statusState, setRu, setEn, setSp } = useContext(StatusContext);
+  const activeButton = () => {
+    const { lng } = statusState;
+    if (lng === 'en') {
+      return '2';
+    }
+    if (lng === 'sp') {
+      return '3';
+    }
+    return '1';
+  };
+
+  const [radioValue, setRadioValue] = useState(activeButton());
 
   const radios = [
     { name: 'ru', value: '1' },
@@ -14,7 +27,19 @@ function ButtonsLng() {
 
   const handleLangSwitch = (num, name) => {
     setRadioValue(num);
-    i18n.changeLanguage(name);
+
+    if (name === 'en') {
+      setEn();
+    }
+    if (name === 'sp') {
+      setSp();
+    }
+    if (name === 'ru') {
+      setRu();
+    }
+    const { lng } = statusState;
+    console.log(lng);
+    return i18n.changeLanguage(lng);
   };
 
   return (

@@ -1,5 +1,5 @@
 // import { Link } from 'react-router-dom';
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
@@ -15,6 +15,7 @@ import ChannelsBlock from './components/channels_block.jsx';
 import MessagesBlock from './components/messages_block.jsx';
 import Header from './components/header.jsx';
 import ButtonsLng from './components/buttons_languages.jsx';
+import StatusContext from '../context/index.js';
 
 const Mainpage = () => {
   const dispatch = useDispatch();
@@ -112,10 +113,13 @@ const Mainpage = () => {
     );
   });
 
+  const { setInactive } = useContext(StatusContext);
+
   const handleOnClick = (e) => {
     e.preventDefault();
     navigate('/login');
     localStorage.clear();
+    setInactive();
   };
 
   return (
