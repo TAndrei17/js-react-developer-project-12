@@ -65,6 +65,7 @@ const ru = {
       channelNoRenamed: 'Не удалось переименовать канал',
       channelRemoved: 'Канал удален',
       channelNoRemoved: 'Не удалось удалить канал',
+      notConnected: 'Ошибка соединения',
     },
   },
 };

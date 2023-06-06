@@ -64,6 +64,7 @@ const en = {
       channelNoRenamed: 'Failed to rename a channel',
       channelRemoved: 'Channel is removed',
       channelNoRemoved: 'Failed to remove a channel',
+      notConnected: 'Connection error',
     },
   },
 };
