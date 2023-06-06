@@ -13,6 +13,8 @@ const notifyRemoveSuccess = () => toast.success(i18next.t('popupNotifications.ch
 
 const notifyRemovedError = () => toast.error(i18next.t('popupNotifications.channelNoRemoved'));
 
+const notifyNoConnection = () => toast.error(i18next.t('popupNotifications.notConnected'));
+
 
 export { 
   notifyCreateSuccess, 
@@ -20,5 +22,6 @@ export {
   notifyRenameSuccess, 
   notifyRenameError,
   notifyRemoveSuccess, 
-  notifyRemovedError 
+  notifyRemovedError,
+  notifyNoConnection,
 };

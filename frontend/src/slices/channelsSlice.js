@@ -1,4 +1,7 @@
-import { createSlice, current } from '@reduxjs/toolkit';
+import { 
+  createSlice, 
+  // current,
+  } from '@reduxjs/toolkit';
 
 const initialState = {
     entities: {},
@@ -13,7 +16,7 @@ const channelsSlice = createSlice({
         const { entities, ids } = payload;
         state.entities = entities;
         state.ids = ids;
-        console.log(current(state));
+        // console.log(current(state));
       },
       addChannel(state, { payload }) {
         const { body, id } = payload;
@@ -21,13 +24,13 @@ const channelsSlice = createSlice({
         if (!state.ids.includes(id)) {
           state.ids.push(id);
         }
-        console.log(current(state));
+        // console.log(current(state));
       },
       removeChannel(state, {payload}) {
         const { id } = payload;
         delete state.entities[id];
         state.ids = state.ids.filter((channelId) => channelId !== id);
-        console.log(current(state));
+        // console.log(current(state));
       },
     },
 });

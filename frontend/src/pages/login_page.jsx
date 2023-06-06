@@ -11,6 +11,7 @@ import StatusContext from '../context/index.js';
 import Header from './components/header.jsx';
 import ButtonsLng from './components/buttons_languages.jsx';
 import i18next from '../i18next.js';
+import { notifyNoConnection } from '../popup_messages/messages.js';
 
 const LoginSchema = yup.object().shape({
   username: yup.string().trim().required(i18next.t('loginPage.nicRequire')),
@@ -50,7 +51,7 @@ const Loginpage = () => {
           axios
             .post('/api/v1/login', values)
             .then((response) => {
-              console.log(response.data);
+              // console.log(response.data);
               accessYes();
               setActive();
               Object.assign(localStorage, response.data);
@@ -58,6 +59,7 @@ const Loginpage = () => {
             .then(() => navigate('/'))
             .catch((error) => {
               accessNo();
+              notifyNoConnection();
             });
           resetForm();
         }}>

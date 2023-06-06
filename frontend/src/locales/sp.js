@@ -64,6 +64,7 @@ const sp = {
       channelNoRenamed: 'Fallo al renombrar el canal',
       channelRemoved: 'Canal eliminado',
       channelNoRemoved: 'Fallo al eliminar el canal',
+      notConnected: 'Error de conexión',
     },
   },
 };

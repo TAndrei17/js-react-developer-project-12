@@ -5,6 +5,7 @@ import { Formik, Form, Field } from 'formik';
 
 import MessagesBlockShow from './messages_block_show.jsx';
 import { socket } from '../../App.js';
+import { notifyNoConnection } from '../../popup_messages/messages.js';
 
 const MessagesBlock = () => {
   const { t } = useTranslation('translation', { keyPrefix: 'mainPage' });
@@ -60,7 +61,10 @@ const MessagesBlock = () => {
               values
             );
             socket.emit('newMessage', newMessage, (response) => {
-              console.log(response.status);
+              // console.log(response.status);
+              if (response.status !== 'ok') {
+                notifyNoConnection();
+              }
             });
             resetForm();
           }}>

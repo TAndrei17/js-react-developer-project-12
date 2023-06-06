@@ -27,7 +27,6 @@ function ButtonsLng() {
 
   const handleLangSwitch = (num, name) => {
     setRadioValue(num);
-
     if (name === 'en') {
       setEn();
     }
@@ -38,7 +37,7 @@ function ButtonsLng() {
       setRu();
     }
     const { lng } = statusState;
-    console.log(lng);
+    // console.log(lng);
     return i18n.changeLanguage(lng);
   };
 

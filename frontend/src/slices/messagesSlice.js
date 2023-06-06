@@ -1,7 +1,8 @@
-import { createSlice, current } from '@reduxjs/toolkit';
+import { 
+  createSlice, 
+  // current,
+  } from '@reduxjs/toolkit';
 import { actions as channelsActions } from './channelsSlice.js';
-
-
 
 const initialState = {
     entities: {},
@@ -16,7 +17,7 @@ const messagesSlice = createSlice({
         const { entities, ids } = payload;
         state.entities = entities;
         state.ids = ids;
-        console.log(current(state));
+        // console.log(current(state));
       },
       addMessage(state, { payload }) {
         const { body, id } = payload;
@@ -24,7 +25,7 @@ const messagesSlice = createSlice({
         if (!state.ids.includes(id)) {
           state.ids.push(id);
         }
-        console.log(current(state));
+        // console.log(current(state));
       }
     },
     extraReducers: (builder) => {
@@ -36,10 +37,10 @@ const messagesSlice = createSlice({
           }
           return acc;
         }, {});
-        console.log(updatesMessages);
+        // console.log(updatesMessages);
         state.entities = updatesMessages;  
         state.ids = Object.keys(updatesMessages).filter((id) => id !== channelId);
-        console.log(current(state));
+        // console.log(current(state));
       })
     },
 });

@@ -1,4 +1,6 @@
-import { createSlice, current } from '@reduxjs/toolkit';
+import { createSlice,
+   // current,
+  } from '@reduxjs/toolkit';
 
 const initialState = {
     currentChannel: '',
@@ -10,7 +12,7 @@ const channelSlice = createSlice({
     reducers: {
       setChannel(state, { payload }) {
         state.currentChannel = payload;
-        console.log(current(state));
+        // console.log(current(state));
       },
     },
 });
