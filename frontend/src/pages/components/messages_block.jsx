@@ -7,6 +7,13 @@ import MessagesBlockShow from './messages_block_show.jsx';
 import { socket } from '../../App.js';
 import { notifyNoConnection } from '../../popup_messages/messages.js';
 
+let filter = require('leo-profanity');
+
+const getLanguage = (str) => {
+  const isCyrillic = /[а-я]/i.test(str);
+  return isCyrillic === true ? 'ru' : 'en';
+};
+
 const MessagesBlock = () => {
   const { t } = useTranslation('translation', { keyPrefix: 'mainPage' });
   const currentChannel = useSelector(
@@ -56,9 +63,12 @@ const MessagesBlock = () => {
         <Formik
           initialValues={{ body: '' }}
           onSubmit={(values, { resetForm }) => {
+            const { body } = values;
+            filter.loadDictionary(getLanguage(body));
+            const cleanValues = filter.clean(body);
             const newMessage = Object.assign(
               { channelId: currentChannel, username: localStorage.username },
-              values
+              { body: cleanValues }
             );
             socket.emit('newMessage', newMessage, (response) => {
               // console.log(response.status);
