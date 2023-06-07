@@ -1,5 +1,5 @@
 import { toast } from 'react-toastify';
-import i18next from '../i18next.js';
+import i18next from '../../i18next.js';
 
 const notifyCreateSuccess = () => toast.success(i18next.t('popupNotifications.channelCreated'));
 

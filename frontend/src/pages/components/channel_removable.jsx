@@ -2,8 +2,8 @@ import { useDispatch } from 'react-redux';
 import { actions as currChannelActions } from '../../slices/channelSlice.js';
 import { useTranslation } from 'react-i18next';
 
-import DeleteChannel from '../modalWindows/channel_delete.jsx';
-import ChangeChannel from '../modalWindows/channel_change.jsx';
+import DeleteChannel from '../modal_windows/channel_delete.jsx';
+import ChangeChannel from '../modal_windows/channel_change.jsx';
 
 const RemovableChannel = (props) => {
   const dispatch = useDispatch();

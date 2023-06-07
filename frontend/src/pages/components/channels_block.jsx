@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
-import CreateNewChannel from '../modalWindows/channel_create.jsx';
+import CreateNewChannel from '../modal_windows/channel_create.jsx';
 import ChannelsList from './channels_list.jsx';
 
 const ChannelsBlock = () => {

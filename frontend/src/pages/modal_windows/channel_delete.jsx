@@ -8,7 +8,7 @@ import { socket } from '../../App.js';
 import {
   notifyRemoveSuccess,
   notifyRemovedError,
-} from '../../popup_messages/messages.js';
+} from '../popup_messages/messages.js';
 
 const DeleteChannel = (props) => {
   const [show, setShow] = useState(false);
