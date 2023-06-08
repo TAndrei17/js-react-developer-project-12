@@ -40,7 +40,7 @@ const ru = {
       message_one: '{{count}} сообщение',
       message_few: '{{count}} сообщения',
       message_many: '{{count}} сообщений',
-      messageField: 'Введите сообщение',
+      messageField: 'Введите сообщение...',
       ariaLabel: 'Новое сообщение',
       fieldTitle: 'Привет, мир!',
       messageSend: 'Отправить',
