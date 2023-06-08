@@ -12,7 +12,7 @@ const ru = {
       formLoginError: 'Неверные имя пользователя или пароль',
       loginButton: 'Войти',
       noAccount: 'Нет аккаунта?',
-      signUpLink: 'Зарегистрироваться',
+      signUpLink: 'Регистрация',
     },
     signUpPage: {
       header: 'Регистрация',
