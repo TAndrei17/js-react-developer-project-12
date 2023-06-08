@@ -23,10 +23,10 @@ import store from './slices/index.js';
 import { io } from 'socket.io-client';
 
 // for deploy on Railway
-export const socket = io('https://js-react-developer-project-12-production-1e82.up.railway.app/');
+// export const socket = io('https://js-react-developer-project-12-production-1e82.up.railway.app/');
 
 // for work on local machine
-// export const socket = io("ws://localhost:3000");
+export const socket = io("ws://localhost:3000");
 
 const rollbarConfig = {
   accessToken: '05b61881b3fa407493a725bbe6a1f084',
