@@ -86,6 +86,7 @@ const MessagesBlock = () => {
                   data-bs-toggle="tooltip"
                   data-bs-placement="top"
                   title={t('fieldTitle')}
+                  value=""
                 />
                 <button
                   className="btn btn-primary"
