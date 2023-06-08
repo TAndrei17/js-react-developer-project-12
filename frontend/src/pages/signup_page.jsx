@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { ToastContainer } from 'react-toastify';
 
 import { Formik, Form, Field } from 'formik';
 import * as yup from 'yup';
@@ -11,6 +12,7 @@ import StatusContext from '../context/index.js';
 import Header from './components/header.jsx';
 import ButtonsLng from './components/buttons_languages.jsx';
 import i18n from '../i18next.js';
+import { notifyNoConnection } from './popup_messages/messages.js';
 
 const LoginSchema = yup.object().shape({
   username: yup
@@ -33,7 +35,7 @@ const ErrorBlock = () => {
   const { t } = useTranslation('translation', { keyPrefix: 'signUpPage' });
   const { authorization } = statusState;
 
-  const classError = cn('mt-0', {
+  const classError = cn('mt-0', 'text-danger', {
     'd-none': authorization,
     'd-block': !authorization,
   });
@@ -47,6 +49,7 @@ const Signuppage = () => {
 
   return (
     <>
+      <ToastContainer />
       <Header>
         <ButtonsLng />
       </Header>
@@ -66,11 +69,12 @@ const Signuppage = () => {
             .then(() => navigate('/'))
             .catch((error) => {
               accessNo();
+              notifyNoConnection();
             });
           resetForm();
         }}>
         {({ errors, touched, isSubmitting }) => (
-          <div className="container h-100 mt-3">
+          <div className="container mt-5">
             <div className="row justify-content-center align-content-center h-100">
               <h1 className="col-12 text-center text-primary">{t('header')}</h1>
               <Form className="col-12 col-md-6 mt-3">
@@ -85,7 +89,7 @@ const Signuppage = () => {
                     className="form-control"
                   />
                   {errors.username && touched.username ? (
-                    <div>{errors.username}</div>
+                    <div className="text-danger">{errors.username}</div>
                   ) : null}
                   <label htmlFor="username">{t('userName')}</label>
                 </div>
@@ -101,7 +105,7 @@ const Signuppage = () => {
                     className="form-control"
                   />
                   {errors.password && touched.password ? (
-                    <div>{errors.password}</div>
+                    <div className="text-danger">{errors.password}</div>
                   ) : null}
                   <label htmlFor="password">{t('password')}</label>
                 </div>
@@ -117,7 +121,7 @@ const Signuppage = () => {
                     className="form-control"
                   />
                   {errors.confirm_password && touched.confirm_password ? (
-                    <div>{errors.confirm_password}</div>
+                    <div className="text-danger">{errors.confirm_password}</div>
                   ) : null}
                   <label htmlFor="confirm_password">
                     {t('confirmPassword')}

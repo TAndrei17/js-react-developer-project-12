@@ -5,16 +5,14 @@ const Header = ({ children }) => {
   const { t } = useTranslation();
 
   return (
-    <>
-      <nav className="shadow-sm navbar navbar-expand-lg navbar-light bg-white mb-3">
-        <div className="container">
-          <Link to="/" className="navbar-brand col-auto me-auto">
-            {t('headerPage')}
-          </Link>
-          {children}
-        </div>
-      </nav>
-    </>
+    <nav className="navbar navbar-expand-lg navbar-light bg-white mb-3 shadow">
+      <div className="container">
+        <Link to="/" className="navbar-brand col-auto me-auto">
+          {t('headerPage')}
+        </Link>
+        {children}
+      </div>
+    </nav>
   );
 };
 

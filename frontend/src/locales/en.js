@@ -59,11 +59,8 @@ const en = {
     },
     popupNotifications: {
       channelCreated: 'Channel is created',
-      channelNoCreated: 'Failed to create a channel',
       channelRenamed: 'Channel is renamed',
-      channelNoRenamed: 'Failed to rename a channel',
       channelRemoved: 'Channel is removed',
-      channelNoRemoved: 'Failed to remove a channel',
       notConnected: 'Connection error',
     },
   },

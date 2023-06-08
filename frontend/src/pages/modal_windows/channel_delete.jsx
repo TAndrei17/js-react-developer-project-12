@@ -7,7 +7,7 @@ import Modal from 'react-bootstrap/Modal';
 import { socket } from '../../App.js';
 import {
   notifyRemoveSuccess,
-  notifyRemovedError,
+  notifyNoConnection,
 } from '../popup_messages/messages.js';
 
 const DeleteChannel = (props) => {
@@ -19,7 +19,7 @@ const DeleteChannel = (props) => {
 
   const deleteChannel = (id) => {
     socket.emit('removeChannel', id, (response) => {
-      response.status === 'ok' ? notifyRemoveSuccess() : notifyRemovedError();
+      response.status === 'ok' ? notifyRemoveSuccess() : notifyNoConnection();
       handleClose();
     });
   };

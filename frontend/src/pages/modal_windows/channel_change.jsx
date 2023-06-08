@@ -7,7 +7,7 @@ import { Formik, Form, Field } from 'formik';
 import { socket } from '../../App.js';
 import {
   notifyRenameSuccess,
-  notifyRenameError,
+  notifyNoConnection,
 } from '../popup_messages/messages.js';
 import { textFilter, getLanguage } from '../filter_text/index.js';
 
@@ -65,7 +65,7 @@ const ChangeChannel = (props) => {
             socket.emit('renameChannel', newName, (response) => {
               response.status === 'ok'
                 ? notifyRenameSuccess()
-                : notifyRenameError();
+                : notifyNoConnection();
             });
             handleClose();
             resetForm();

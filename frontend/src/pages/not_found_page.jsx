@@ -12,7 +12,7 @@ const Notfoundpage = () => {
       <Header>
         <ButtonsLng />
       </Header>
-      <div className="container vh-100">
+      <div className="container mt-5">
         <div className="row justify-content-center mt-5 mb-5">
           <div className="col-12 mb-3 h2 text-center text-primary">
             {t('errorMessage')}

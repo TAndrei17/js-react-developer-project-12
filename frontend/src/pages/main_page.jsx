@@ -122,7 +122,7 @@ const Mainpage = () => {
   };
 
   return (
-    <div>
+    <>
       <ToastContainer />
       <Header>
         <div className="col-auto h3">
@@ -132,13 +132,13 @@ const Mainpage = () => {
           </button>
         </div>
       </Header>
-      <div className="container vh-100">
-        <div className="row h-75">
+      <div className="container h-75 my-4 shadow">
+        <div className="row h-100">
           <ChannelsBlock />
           <MessagesBlock />
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

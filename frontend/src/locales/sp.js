@@ -59,11 +59,8 @@ const sp = {
     },
     popupNotifications: {
       channelCreated: 'Canal creado',
-      channelNoCreated: 'Fallo al crear el canal',
       channelRenamed: 'Canal renombrado',
-      channelNoRenamed: 'Fallo al renombrar el canal',
       channelRemoved: 'Canal eliminado',
-      channelNoRemoved: 'Fallo al eliminar el canal',
       notConnected: 'Error de conexión',
     },
   },

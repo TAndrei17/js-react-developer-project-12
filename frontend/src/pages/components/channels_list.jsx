@@ -13,7 +13,7 @@ const ChannelsList = (props) => {
     <>
       <ul
         id="channels-box"
-        className="nav nav-pills nav-fill px-2 mb-2 d-block overflow-auto">
+        className="nav nav-pills nav-fill px-2 my-3 d-block h-100 overflow-auto">
         {props.channels.map((channel) => {
           const setClasses1 = cn('btn', 'rounded-0', 'w-100', 'text-start', {
             active: channel.id === currentChannel,

@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { ToastContainer } from 'react-toastify';
 
 import { Formik, Form, Field } from 'formik';
 import * as yup from 'yup';
@@ -18,7 +19,7 @@ const LoginSchema = yup.object().shape({
   password: yup
     .string()
     .required(i18next.t('loginPage.passwordRequire'))
-    .min(5, i18next.t('loginPage.passwordMin', { signs: 5 })), // по заданию 6?
+    .min(5, i18next.t('loginPage.passwordMin', { signs: 6 })), // по заданию 6?
 });
 
 const ErrorBlock = () => {
@@ -41,6 +42,7 @@ const Loginpage = () => {
 
   return (
     <>
+      <ToastContainer />
       <Header>
         <ButtonsLng />
       </Header>
@@ -58,13 +60,13 @@ const Loginpage = () => {
             })
             .then(() => navigate('/'))
             .catch((error) => {
-              accessNo();
               notifyNoConnection();
+              accessNo();
             });
           resetForm();
         }}>
         {({ errors, touched, isSubmitting }) => (
-          <div className="container h-100 mt-3">
+          <div className="container mt-5">
             <div className="row justify-content-center align-content-center h-100">
               <h1 className="col-12 text-center text-primary">{t('header')}</h1>
               <Form className="col-12 col-md-6 mt-3">

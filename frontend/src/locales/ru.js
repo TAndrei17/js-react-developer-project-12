@@ -8,8 +8,8 @@ const ru = {
       nicRequire: 'Пожалуйста, укажите ник',
       password: 'Пароль',
       passwordRequire: 'Пожалуйста, укажите пароль',
-      passwordMin: 'В пароле должно быть минимум {{signs}} знаков',
-      formLoginError: 'Неверное имя пользователя или пароль',
+      passwordMin: 'Не менее {{signs}} символов',
+      formLoginError: 'Неверные имя пользователя или пароль',
       loginButton: 'Войти',
       noAccount: 'Нет аккаунта?',
       signUpLink: 'Зарегистрироваться',
@@ -29,9 +29,9 @@ const ru = {
       formSignUpError: 'Такой пользователь уже существует',
     },
     notFoundPage: {
-      errorMessage: 'Извините. Страница не существует',
-      errorNumber: '(Ошибка 404)',
-      advice: `Но вы можете войти${" "}`,
+      errorMessage: 'Страница не найдена',
+      errorNumber: '(ошибка 404)',
+      advice: `Но вы можете перейти${" "}`,
       adviceLink: 'на главную страницу',
     },
     mainPage: {
@@ -60,15 +60,11 @@ const ru = {
     },
     popupNotifications: {
       channelCreated: 'Канал создан',
-      channelNoCreated: 'Не удалось создать канал',
       channelRenamed: 'Канал переименован',
-      channelNoRenamed: 'Не удалось переименовать канал',
-      channelRemoved: 'Канал удален',
-      channelNoRemoved: 'Не удалось удалить канал',
+      channelRemoved: 'Канал удалён',
       notConnected: 'Ошибка соединения',
     },
   },
 };
 
 export default ru;
-
