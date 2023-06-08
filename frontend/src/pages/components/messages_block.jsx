@@ -46,7 +46,7 @@ const MessagesBlock = () => {
   })}`;
 
   return (
-    <div className="col-12 col-sm-9 border border-1 h-100 m-0">
+    <div className="col-8 border border-1 h-100 m-0">
       <div className="row h-100 pb-3 w-auto">
         <div className="col-12 h-auto py-2 text-primary shadow">
           <span className="h6">{showCurrentChannel}</span>
