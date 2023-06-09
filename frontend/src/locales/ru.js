@@ -42,7 +42,7 @@ const ru = {
       message_many: '{{count}} сообщений',
       messageField: 'Введите сообщение...',
       ariaLabel: 'Новое сообщение',
-      fieldTitle: 'Привет, мир!',
+      // fieldTitle: 'Привет, мир!',
       messageSend: 'Отправить',
     },
     modalWindows: {

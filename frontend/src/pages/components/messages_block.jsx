@@ -74,22 +74,17 @@ const MessagesBlock = () => {
           }}>
           {({ isSubmitting }) => (
             <div className="col-12 m-0">
-              <Form>
-                <div className="input-group">
+              <Form novalidate>
+                <div className="input-group has-validation">
                   <Field
-                    autoFocus
                     name="body"
-                    id={t('ariaLabel')}
+                    id="new_message"
                     type="text"
-                    className="form-control border-primary text-primary"
+                    className="form-control border-primary"
                     placeholder={t('messageField')}
                     aria-label={t('ariaLabel')}
-                    aria-describedby="button-addon2"
-                    data-bs-toggle="tooltip"
-                    data-bs-placement="top"
-                    title={t('fieldTitle')}
                   />
-                  <label htmlFor={t('ariaLabel')} className="visually-hidden">
+                  <label htmlFor="new_message" className="visually-hidden">
                     {t('ariaLabel')}
                   </label>
                   <button

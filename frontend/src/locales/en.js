@@ -41,7 +41,7 @@ const en = {
       message_other: '{{count}} messages',
       messageField: 'Write your message',
       ariaLabel: 'New message',
-      fieldTitle: 'Hello, world!',
+      // fieldTitle: 'Hello, world!',
       messageSend: 'Post',
     },
     modalWindows: {
