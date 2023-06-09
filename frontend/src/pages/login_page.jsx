@@ -8,7 +8,7 @@ import * as yup from 'yup';
 import axios from 'axios';
 import cn from 'classnames';
 
-import StatusContext from '../context/index.js';
+import StatusContext, { statusState } from '../context/index.js';
 import Header from './components/header.jsx';
 import ButtonsLng from './components/buttons_languages.jsx';
 import i18next from '../i18next.js';
@@ -36,7 +36,8 @@ const ErrorBlock = () => {
 };
 
 const Loginpage = () => {
-  const { setActive, accessYes, accessNo } = useContext(StatusContext);
+  const { setActive, accessYes, accessNo, setNewUser } =
+    useContext(StatusContext);
   const navigate = useNavigate();
   const { t } = useTranslation('translation', { keyPrefix: 'loginPage' });
 
@@ -57,6 +58,8 @@ const Loginpage = () => {
               accessYes();
               setActive();
               Object.assign(localStorage, response.data);
+              setNewUser();
+              // console.log(statusState);
             })
             .then(() => navigate('/'))
             .catch((error) => {

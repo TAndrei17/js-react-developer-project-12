@@ -1,5 +1,7 @@
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import { useContext } from 'react';
+import StatusContext from '../../context/index.js';
 
 import { Formik, Form, Field } from 'formik';
 
@@ -9,6 +11,7 @@ import { notifyNoConnection } from '../popup_messages/messages.js';
 import { textFilter, getLanguage } from '../filter_text/index.js';
 
 const MessagesBlock = () => {
+  const { statusState } = useContext(StatusContext);
   const { t } = useTranslation('translation', { keyPrefix: 'mainPage' });
   const currentChannel = useSelector(
     (state) => state.channelReducer.currentChannel
@@ -60,10 +63,12 @@ const MessagesBlock = () => {
             const { body } = values;
             textFilter.loadDictionary(getLanguage(body));
             const cleanValues = textFilter.clean(body);
+            console.log(statusState.user);
             const newMessage = Object.assign(
-              { channelId: currentChannel, username: localStorage.username },
+              { channelId: currentChannel, username: statusState.user },
               { body: cleanValues }
             );
+            console.log(newMessage);
             socket.emit('newMessage', newMessage, (response) => {
               // console.log(response.status);
               if (response.status !== 'ok') {
@@ -74,23 +79,23 @@ const MessagesBlock = () => {
           }}>
           {({ isSubmitting }) => (
             <div className="col-12 m-0">
-              <Form novalidate>
+              <Form noValidate>
                 <div className="input-group has-validation">
                   <Field
                     name="body"
-                    id="new_message"
+                    id="newMessage"
                     type="text"
                     className="form-control border-primary"
                     placeholder={t('messageField')}
                     aria-label={t('ariaLabel')}
                   />
-                  <label htmlFor="new_message" className="visually-hidden">
+                  <label htmlFor="newMessage" className="visually-hidden">
                     {t('ariaLabel')}
                   </label>
                   <button
                     className="btn btn-primary"
                     type="submit"
-                    id="button-addon2"
+                    id="buttonSendMessage"
                     disabled={isSubmitting}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"

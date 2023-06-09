@@ -8,6 +8,7 @@ const statusState = {
     authorization: true,
     login: 'inactive',
     lng: 'ru',
+    user: '',
   };
 
 export default StatusContext;

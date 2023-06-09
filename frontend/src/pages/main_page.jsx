@@ -112,12 +112,13 @@ const Mainpage = () => {
     );
   });
 
-  const { setInactive } = useContext(StatusContext);
+  const { setInactive, removeUser } = useContext(StatusContext);
 
   const handleOnClick = (e) => {
     e.preventDefault();
     navigate('/login');
     localStorage.clear();
+    removeUser();
     setInactive();
   };
 
