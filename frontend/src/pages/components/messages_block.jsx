@@ -88,7 +88,6 @@ const MessagesBlock = () => {
                     data-bs-toggle="tooltip"
                     data-bs-placement="top"
                     title={t('fieldTitle')}
-                    value=""
                   />
                   <label htmlFor={t('ariaLabel')} className="visually-hidden">
                     {t('ariaLabel')}
