@@ -15,7 +15,7 @@ import { Signuppage } from './pages/signup_page.jsx';
 import { Notfoundpage } from './pages/not_found_page.jsx';
 
 import StatusProvider from './context/status_provider.js';
-import { statusState } from './context/index.js'
+// import { statusState } from './context/index.js'
 
 import RequireAuth from './hoc/RequireAuth.jsx';
 
@@ -58,4 +58,4 @@ function App() {
 }
 
 export default App;
-export { statusState };
+// export { statusState };
