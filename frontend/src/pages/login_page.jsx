@@ -8,7 +8,7 @@ import * as yup from 'yup';
 import axios from 'axios';
 import cn from 'classnames';
 
-import StatusContext, { statusState } from '../context/index.js';
+import StatusContext from '../context/index.js';
 import Header from './components/header.jsx';
 import ButtonsLng from './components/buttons_languages.jsx';
 import i18next from '../i18next.js';
@@ -19,7 +19,7 @@ const LoginSchema = yup.object().shape({
   password: yup
     .string()
     .required(i18next.t('loginPage.passwordRequire'))
-    .min(5, i18next.t('loginPage.passwordMin', { signs: 6 })), // по заданию 6?
+    .min(5, i18next.t('loginPage.passwordMin', { signs: 6 })),
 });
 
 const ErrorBlock = () => {

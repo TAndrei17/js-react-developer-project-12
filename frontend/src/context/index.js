@@ -8,7 +8,7 @@ const statusState = {
     authorization: true,
     login: 'inactive',
     lng: 'ru',
-    user: '',
+    user: localStorage.hasOwnProperty('username') ? localStorage.username : '',
   };
 
 export default StatusContext;

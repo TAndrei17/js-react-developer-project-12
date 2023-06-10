@@ -17,6 +17,7 @@ import ButtonsLng from './components/buttons_languages.jsx';
 import StatusContext from '../context/index.js';
 
 const Mainpage = () => {
+  const { setInactive, removeUser } = useContext(StatusContext);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { t } = useTranslation('translation', { keyPrefix: 'mainPage' });
@@ -111,8 +112,6 @@ const Mainpage = () => {
       })
     );
   });
-
-  const { setInactive, removeUser } = useContext(StatusContext);
 
   const handleOnClick = (e) => {
     e.preventDefault();
