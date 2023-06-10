@@ -88,8 +88,11 @@ const MessagesBlock = () => {
                       type="text"
                       className="form-control border-primary"
                       placeholder={t('messageField')}
+                      aria-label={t('ariaLabel')}
                     />
-                    <label htmlFor="body">{t('ariaLabel')}</label>
+                    <label htmlFor="body" className="visually-hidden">
+                      {t('ariaLabel')}
+                    </label>
                     <button
                       className="btn btn-primary"
                       type="submit"
