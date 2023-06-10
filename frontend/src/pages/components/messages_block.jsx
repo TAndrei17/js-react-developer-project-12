@@ -85,12 +85,11 @@ const MessagesBlock = () => {
                     <Field
                       autoFocus
                       name="body"
-                      id="newMessage"
                       type="text"
                       className="form-control border-primary"
                       placeholder={t('messageField')}
-                      aria-label={t('ariaLabel')}
                     />
+                    <label htmlFor="body">{t('ariaLabel')}</label>
                     <button
                       className="btn btn-primary"
                       type="submit"

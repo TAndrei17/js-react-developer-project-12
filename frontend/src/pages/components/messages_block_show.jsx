@@ -26,7 +26,7 @@ const MessagesBlockShow = (props) => {
           return (
             <div key={message.id}>
               <div className="mb-2 py-2 px-2 rounded" style={divStyle}>
-                <span>
+                <span className="text-break">
                   <strong>{message.username}:</strong> {message.body}
                 </span>
               </div>
