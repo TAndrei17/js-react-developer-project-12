@@ -83,6 +83,7 @@ const MessagesBlock = () => {
                 <Form noValidate>
                   <div className="input-group has-validation">
                     <Field
+                      autoFocus
                       name="body"
                       id="newMessage"
                       type="text"
