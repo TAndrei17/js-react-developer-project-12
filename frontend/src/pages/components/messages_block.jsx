@@ -93,6 +93,7 @@ const MessagesBlock = () => {
                     <label htmlFor="body" className="visually-hidden">
                       {t('ariaLabel')}
                     </label>
+
                     <button
                       className="btn btn-primary"
                       type="submit"
