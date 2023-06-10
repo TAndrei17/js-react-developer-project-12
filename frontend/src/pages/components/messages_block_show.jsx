@@ -1,6 +1,9 @@
 import { useSelector } from 'react-redux';
+import { useContext } from 'react';
+import StatusContext from '../../context/index.js';
 
 const MessagesBlockShow = (props) => {
+  const { statusState } = useContext(StatusContext);
   const currentChannel = useSelector(
     (state) => state.channelReducer.currentChannel
   );
@@ -9,7 +12,7 @@ const MessagesBlockShow = (props) => {
     <>
       <div id="messages-box" className="col-12 h-75 py-2 overflow-auto">
         {props.messages.map((message) => {
-          const isMyMessage = message.username === localStorage.username;
+          const isMyMessage = message.username === statusState.user;
 
           const divStyle = {
             display: 'inline-block',
