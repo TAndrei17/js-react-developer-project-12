@@ -46,7 +46,7 @@ const ru = {
       messageSend: 'Отправить',
     },
     modalWindows: {
-      switchList: 'Переключатель выпадающего списка',
+      switchList: 'Управление каналом',
       buttonChange: 'Переименовать',
       buttonRemove: 'Удалить',
       headerAddChannel: 'Добавить канал',
