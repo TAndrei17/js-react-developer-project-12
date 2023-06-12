@@ -3,22 +3,19 @@ import { Provider as RollbarProvider, ErrorBoundary } from '@rollbar/react';
 import { Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
+import { io } from 'socket.io-client';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.js';
 import 'react-toastify/dist/ReactToastify.min.css';
-// import './App.css';
 
-import { Mainpage } from './pages/main_page.jsx';
-import { Loginpage } from './pages/login_page.jsx';
-import { Signuppage } from './pages/signup_page.jsx';
-import { Notfoundpage } from './pages/not_found_page.jsx';
+import Mainpage from './pages/main_page.jsx';
+import Loginpage from './pages/login_page.jsx';
+import Signuppage from './pages/signup_page.jsx';
+import Notfoundpage from './pages/not_found_page.jsx';
 
 import StatusProvider from './context/status_provider.js';
-
 import RequireAuth from './hoc/RequireAuth.jsx';
-
 import store from './slices/index.js';
-import { io } from 'socket.io-client';
 
 export const socket = io();
 
@@ -27,21 +24,22 @@ const rollbarConfig = {
   environment: 'production',
 };
 
-function App() {
-
+const App = () => {
   return (
     <RollbarProvider config={rollbarConfig}>
       <ErrorBoundary errorMessage="Error in React render">
         <StatusProvider>
           <Provider store={store}>
             <Routes>
-              <Route path="/" element={
-                <RequireAuth>
-                  <Mainpage />
-                </RequireAuth>
-              } />
+              <Route 
+                path="/" 
+                element={(
+                  <RequireAuth>
+                    <Mainpage />
+                  </RequireAuth>
+                )} />
               <Route path="/login" element={<Loginpage />} />
-              <Route path="/signup" element={<Signuppage />} /> 
+              <Route path="/signup" element={<Signuppage />} />
               <Route path="*" element={<Notfoundpage />} />
             </Routes>
           </Provider>
@@ -49,6 +47,6 @@ function App() {
       </ErrorBoundary>
     </RollbarProvider>
   );
-}
+};
 
 export default App;

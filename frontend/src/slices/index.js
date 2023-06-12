@@ -5,11 +5,11 @@ import messagesReducer from './messagesSlice.js';
 
 // the function creates app's state (from differents slice-reducers)
 const store = configureStore({
-    reducer: {
-      channelReducer,
-      channelsReducer,
-      messagesReducer,
-    },
-  });
+  reducer: {
+    channelReducer,
+    channelsReducer,
+    messagesReducer,
+  },
+});
 
-  export default store;
+export default store;

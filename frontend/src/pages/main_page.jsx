@@ -126,7 +126,10 @@ const Mainpage = () => {
       <Header>
         <div className="col-auto h3">
           <ButtonsLng />
-          <button className="btn btn-primary" onClick={handleOnClick}>
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={handleOnClick}>
             {t('logoutButton')}
           </button>
         </div>
@@ -141,4 +144,4 @@ const Mainpage = () => {
   );
 };
 
-export { Mainpage };
+export default Mainpage;

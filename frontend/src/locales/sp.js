@@ -11,7 +11,7 @@ const sp = {
       passwordMin: 'La contraseña debe contener al menos {{signs}} caracteres',
       formLoginError: 'Nombre de usuario o contraseña incorrectos',
       loginButton: 'Entrar',
-      noAccount: "No tiene una cuenta todavia?",
+      noAccount: 'No tiene una cuenta todavia?',
       signUpLink: 'Registrarse',
     },
     signUpPage: {
@@ -31,7 +31,7 @@ const sp = {
     notFoundPage: {
       errorMessage: 'Lo sentimos, la página no encontrada',
       errorNumber: '(Error 404)',
-      advice: `Pero puede visitar${" "}`,
+      advice: `Pero puede visitar${' '}`,
       adviceLink: 'la página de inicio',
     },
     mainPage: {
@@ -45,7 +45,7 @@ const sp = {
       messageSend: 'Emitir',
     },
     modalWindows: {
-      switchList: 'Cambiar de lista desplegable',
+      switchList: 'Gestión de canales',
       buttonChange: 'Renombrar',
       buttonRemove: 'Eliminar',
       headerAddChannel: 'Añadir un canal',
@@ -55,7 +55,7 @@ const sp = {
       errorMessage: 'El nombre debe ser único!',
       questionDelete: '¿Está seguro?',
       buttonCancel: 'Cancelar',
-      buttonSend: 'Enviar',      
+      buttonSend: 'Enviar',
     },
     popupNotifications: {
       channelCreated: 'Canal creado',
@@ -65,5 +65,5 @@ const sp = {
     },
   },
 };
-  
-  export default sp;
+
+export default sp;

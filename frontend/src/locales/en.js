@@ -31,7 +31,7 @@ const en = {
     notFoundPage: {
       errorMessage: 'Sorry. Page not found',
       errorNumber: '(Error 404)',
-      advice: `But you can visit${" "}`,
+      advice: `But you can visit${' '}`,
       adviceLink: 'main page',
     },
     mainPage: {
@@ -41,11 +41,10 @@ const en = {
       message_other: '{{count}} messages',
       messageField: 'Write your message',
       ariaLabel: 'New message',
-      // fieldTitle: 'Hello, world!',
       messageSend: 'Post',
     },
     modalWindows: {
-      switchList: 'Switch of dropdown list',
+      switchList: 'Channel management',
       buttonChange: 'Rename',
       buttonRemove: 'Remove',
       headerAddChannel: 'Add channel',
@@ -55,7 +54,7 @@ const en = {
       errorMessage: 'The name should be unique!',
       questionDelete: 'Are your sure?',
       buttonCancel: 'Cancel',
-      buttonSend: 'Submit',      
+      buttonSend: 'Submit',
     },
     popupNotifications: {
       channelCreated: 'Channel is created',
@@ -65,5 +64,5 @@ const en = {
     },
   },
 };
-  
+
 export default en;

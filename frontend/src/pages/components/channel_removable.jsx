@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
-import { actions as currChannelActions } from '../../slices/channelSlice.js';
 import { useTranslation } from 'react-i18next';
+import { actions as currChannelActions } from '../../slices/channelSlice.js';
 
 import DeleteChannel from '../modal_windows/channel_delete.jsx';
 import ChangeChannel from '../modal_windows/channel_change.jsx';
@@ -15,33 +15,35 @@ const RemovableChannel = (props) => {
     dispatch(currChannelActions.setChannel(Number(target.id)));
   };
 
+  const { id, classes1, classes2, name } = props;
+
   return (
     <>
       <div className="btn-group d-flex" role="group">
         <button
-          id={props.id}
+          id={id}
           type="button"
-          className={props.classes1}
-          name={props.name}
+          className={classes1}
+          name={name}
           onClick={onClickChooseChannel}>
           <span className="me-1">#</span>
-          {props.name}
+          {name}
         </button>
 
         <button
-          id={props.id}
+          id={id}
           type="button"
-          className={props.classes2}
+          className={classes2}
           data-bs-toggle="dropdown"
           aria-expanded="false">
           <span className="visually-hidden">{t('switchList')}</span>
         </button>
         <ul className="dropdown-menu">
           <li>
-            <DeleteChannel id={props.id} />
+            <DeleteChannel id={id} />
           </li>
           <li>
-            <ChangeChannel id={props.id} name={props.name} />
+            <ChangeChannel id={id} name={name} />
           </li>
         </ul>
       </div>

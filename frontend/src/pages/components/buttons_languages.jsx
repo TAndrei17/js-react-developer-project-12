@@ -4,8 +4,9 @@ import ToggleButton from 'react-bootstrap/ToggleButton';
 import i18n from '../../i18next.js';
 import StatusContext from '../../context/index.js';
 
-function ButtonsLng() {
+const ButtonsLng = () => {
   const { statusState, setRu, setEn, setSp } = useContext(StatusContext);
+
   const activeButton = () => {
     const { lng } = statusState;
     if (lng === 'en') {
@@ -37,17 +38,16 @@ function ButtonsLng() {
       setRu();
     }
     const { lng } = statusState;
-    // console.log(lng);
     return i18n.changeLanguage(lng);
   };
 
   return (
     <>
       <ButtonGroup className="me-3">
-        {radios.map((radio, idx) => (
+        {radios.map((radio) => (
           <ToggleButton
-            key={idx}
-            id={`radio-${idx}`}
+            key={radio.value}
+            id={`radio-${radio.value}`}
             type="radio"
             variant="outline-primary"
             name="radio"
@@ -62,6 +62,6 @@ function ButtonsLng() {
       </ButtonGroup>
     </>
   );
-}
+};
 
 export default ButtonsLng;

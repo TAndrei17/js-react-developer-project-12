@@ -1,14 +1,14 @@
 import { createContext } from 'react';
 
 const StatusContext = createContext({
-    statusState: {},
+  statusState: {},
 });
 
 const statusState = {
-    authorization: true,
-    login: 'inactive',
-    lng: 'ru',
-  };
+  authorization: true,
+  login: 'inactive',
+  lng: 'ru',
+};
 
 export default StatusContext;
 export { statusState };

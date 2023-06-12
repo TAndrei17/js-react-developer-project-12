@@ -61,10 +61,13 @@ const MessagesBlock = () => {
               const { body } = values;
               textFilter.loadDictionary(getLanguage(body));
               const cleanValues = textFilter.clean(body);
-              const newMessage = Object.assign(
-                { channelId: currentChannel, username: localStorage.username },
-                { body: cleanValues }
-              );
+              const newMessage = {
+                ...{
+                  channelId: currentChannel,
+                  username: localStorage.username,
+                },
+                ...{ body: cleanValues },
+              };
               socket.emit('newMessage', newMessage, (response) => {
                 if (response.status !== 'ok') {
                   notifyNoConnection();

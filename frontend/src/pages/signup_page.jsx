@@ -24,7 +24,7 @@ const LoginSchema = yup.object().shape({
     .string()
     .required(i18n.t('signUpPage.passwordRequire'))
     .min(6, i18n.t('signUpPage.passwordMin', { signs: 6 })),
-  confirm_password: yup
+  confirmPassword: yup
     .string()
     .required(i18n.t('signUpPage.confirmPasswordError'))
     .oneOf([yup.ref('password'), null], i18n.t('signUpPage.equalRequire')),
@@ -57,7 +57,7 @@ const Signuppage = () => {
         validationSchema={LoginSchema}
         initialValues={{ username: '', password: '', confirm_password: '' }}
         onSubmit={(values, { resetForm }) => {
-          const { confirm_password, ...updateValues } = values;
+          const { confirmPassword, ...updateValues } = values;
           axios
             .post('/api/v1/signup', updateValues)
             .then((response) => {
@@ -67,7 +67,7 @@ const Signuppage = () => {
               Object.assign(localStorage, response.data);
             })
             .then(() => navigate('/'))
-            .catch((error) => {
+            .catch(() => {
               accessNo();
               notifyNoConnection();
             });
@@ -112,18 +112,18 @@ const Signuppage = () => {
 
                 <div className="form-floating mb-3">
                   <Field
-                    id="confirm_password"
-                    name="confirm_password"
+                    id="confirmPassword"
+                    name="confirmPassword"
                     placeholder={t('equalRequire')}
                     autoComplete="new-password"
                     type="password"
                     required
                     className="form-control"
                   />
-                  {errors.confirm_password && touched.confirm_password ? (
-                    <div className="text-danger">{errors.confirm_password}</div>
+                  {errors.confirmPassword && touched.confirmPassword ? (
+                    <div className="text-danger">{errors.confirmPassword}</div>
                   ) : null}
-                  <label htmlFor="confirm_password">
+                  <label htmlFor="confirmPassword">
                     {t('confirmPassword')}
                   </label>
                 </div>
@@ -144,4 +144,4 @@ const Signuppage = () => {
   );
 };
 
-export { Signuppage };
+export default Signuppage;

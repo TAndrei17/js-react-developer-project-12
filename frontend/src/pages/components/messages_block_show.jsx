@@ -8,7 +8,9 @@ const MessagesBlockShow = (props) => {
 
   const messageRef = useRef(null);
 
-  const currentMessages = props.messages.filter(
+  const { messages } = props;
+
+  const currentMessages = messages.filter(
     (message) => message.channelId === currentChannel
   );
   const lastMessage = currentMessages[currentMessages.length - 1];
@@ -37,7 +39,8 @@ const MessagesBlockShow = (props) => {
               <div key={message.id} ref={messageRef}>
                 <div className="mb-2 py-2 px-2 rounded" style={divStyle}>
                   <span>
-                    <strong>{message.username}:</strong> {message.body}
+                    <strong>{message.username}: </strong>
+                    {message.body}
                   </span>
                 </div>
               </div>

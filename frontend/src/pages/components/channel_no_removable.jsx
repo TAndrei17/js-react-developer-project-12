@@ -10,16 +10,18 @@ const NoRemovableChannel = (props) => {
     dispatch(currChannelActions.setChannel(Number(target.id)));
   };
 
+  const { id, classes1, name } = props;
+
   return (
     <>
       <button
-        id={props.id}
+        id={id}
         type="button"
-        className={props.classes1}
-        name={props.name}
+        className={classes1}
+        name={name}
         onClick={onClickChooseChannel}>
         <span className="me-1">#</span>
-        {props.name}
+        {name}
       </button>
     </>
   );

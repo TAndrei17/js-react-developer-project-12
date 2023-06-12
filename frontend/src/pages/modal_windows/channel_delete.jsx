@@ -19,12 +19,14 @@ const DeleteChannel = (props) => {
 
   const deleteChannel = (id) => {
     socket.emit('removeChannel', id, (response) => {
-      response.status === 'ok' ? notifyRemoveSuccess() : notifyNoConnection();
-      handleClose();
+      return response.status === 'ok'
+        ? notifyRemoveSuccess()
+        : notifyNoConnection();
     });
+    handleClose();
   };
 
-  const id = props.id;
+  const { id } = props;
 
   return (
     <>
@@ -39,7 +41,7 @@ const DeleteChannel = (props) => {
 
         <Modal.Body className="h5">{t('questionDelete')}</Modal.Body>
         <Modal.Footer>
-          <Button id={props.id} variant="secondary" onClick={handleClose}>
+          <Button id={id} variant="secondary" onClick={handleClose}>
             {t('buttonCancel')}
           </Button>
           <Button

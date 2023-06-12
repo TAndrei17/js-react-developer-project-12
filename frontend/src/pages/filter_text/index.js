@@ -1,4 +1,4 @@
-let textFilter = require('leo-profanity');
+const textFilter = require('leo-profanity');
 
 const getLanguage = (str) => {
   const isCyrillic = /[а-я]/i.test(str);

@@ -58,7 +58,7 @@ const Loginpage = () => {
               Object.assign(localStorage, response.data);
             })
             .then(() => navigate('/'))
-            .catch((error) => {
+            .catch(() => {
               notifyNoConnection();
               accessNo();
             });
@@ -122,4 +122,4 @@ const Loginpage = () => {
   );
 };
 
-export { Loginpage };
+export default Loginpage;

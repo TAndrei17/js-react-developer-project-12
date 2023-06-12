@@ -3,6 +3,8 @@ import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
 import { Formik, Form, Field } from 'formik';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 import { socket } from '../../App.js';
 import {
@@ -10,9 +12,6 @@ import {
   notifyNoConnection,
 } from '../popup_messages/messages.js';
 import { textFilter, getLanguage } from '../filter_text/index.js';
-
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
 
 const ChangeChannel = (props) => {
   const [show, setShow] = useState(false);
@@ -34,7 +33,6 @@ const ChangeChannel = (props) => {
     let error;
     const checkChannels = channels.filter((channel) => channel.name === value);
     if (checkChannels.length > 0) {
-      // console.log(checkChannels.length);
       error = t('errorMessage');
     }
     return error;
@@ -60,10 +58,9 @@ const ChangeChannel = (props) => {
             const { name } = values;
             textFilter.loadDictionary(getLanguage(name));
             const cleanValues = { name: textFilter.clean(name) };
-            const newName = Object.assign({ id }, cleanValues);
-            // console.log(newName);
+            const newName = { ...{ id }, ...cleanValues };
             socket.emit('renameChannel', newName, (response) => {
-              response.status === 'ok'
+              return response.status === 'ok'
                 ? notifyRenameSuccess()
                 : notifyNoConnection();
             });

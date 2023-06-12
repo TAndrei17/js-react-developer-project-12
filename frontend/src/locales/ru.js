@@ -31,7 +31,7 @@ const ru = {
     notFoundPage: {
       errorMessage: 'Страница не найдена',
       errorNumber: '(ошибка 404)',
-      advice: `Но вы можете перейти${" "}`,
+      advice: `Но вы можете перейти${' '}`,
       adviceLink: 'на главную страницу',
     },
     mainPage: {
@@ -42,7 +42,6 @@ const ru = {
       message_many: '{{count}} сообщений',
       messageField: 'Введите сообщение...',
       ariaLabel: 'Новое сообщение',
-      // fieldTitle: 'Привет, мир!',
       messageSend: 'Отправить',
     },
     modalWindows: {
@@ -56,7 +55,7 @@ const ru = {
       errorMessage: 'Должно быть уникальным!',
       questionDelete: 'Уверены?',
       buttonCancel: 'Отменить',
-      buttonSend: 'Отправить',     
+      buttonSend: 'Отправить',
     },
     popupNotifications: {
       channelCreated: 'Канал создан',
