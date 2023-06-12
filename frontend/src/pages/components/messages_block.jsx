@@ -1,7 +1,5 @@
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { useContext } from 'react';
-import StatusContext from '../../context/index.js';
 
 import { Formik, Form, Field } from 'formik';
 
@@ -11,7 +9,6 @@ import { notifyNoConnection } from '../popup_messages/messages.js';
 import { textFilter, getLanguage } from '../filter_text/index.js';
 
 const MessagesBlock = () => {
-  const { statusState } = useContext(StatusContext);
   const { t } = useTranslation('translation', { keyPrefix: 'mainPage' });
   const currentChannel = useSelector(
     (state) => state.channelReducer.currentChannel
@@ -64,14 +61,11 @@ const MessagesBlock = () => {
               const { body } = values;
               textFilter.loadDictionary(getLanguage(body));
               const cleanValues = textFilter.clean(body);
-              // console.log(statusState.user);
               const newMessage = Object.assign(
-                { channelId: currentChannel, username: statusState.user },
+                { channelId: currentChannel, username: localStorage.username },
                 { body: cleanValues }
               );
-              // console.log(newMessage);
               socket.emit('newMessage', newMessage, (response) => {
-                // console.log(response.status);
                 if (response.status !== 'ok') {
                   notifyNoConnection();
                 }

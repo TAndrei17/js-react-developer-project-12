@@ -6,7 +6,6 @@ import { Provider } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.js';
 import 'react-toastify/dist/ReactToastify.min.css';
-// import logo from './logo.svg';
 // import './App.css';
 
 import { Mainpage } from './pages/main_page.jsx';
@@ -15,17 +14,12 @@ import { Signuppage } from './pages/signup_page.jsx';
 import { Notfoundpage } from './pages/not_found_page.jsx';
 
 import StatusProvider from './context/status_provider.js';
-// import { statusState } from './context/index.js'
 
 import RequireAuth from './hoc/RequireAuth.jsx';
 
 import store from './slices/index.js';
 import { io } from 'socket.io-client';
 
-// for deploy on Railway
-// export const socket = io('https://js-react-developer-project-12-production-1e82.up.railway.app/');
-
-// for work on local machine
 export const socket = io();
 
 const rollbarConfig = {
@@ -58,4 +52,3 @@ function App() {
 }
 
 export default App;
-// export { statusState };

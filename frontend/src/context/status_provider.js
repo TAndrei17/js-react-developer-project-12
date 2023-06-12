@@ -4,7 +4,7 @@ import StatusContext from './index.js';
 import { statusState } from './index.js';
 
 const StatusProvider = ({children}) => {
-    const { authorization, login, lng, user } = statusState;
+    const { authorization, login, lng } = statusState;
   
     const [access, setAccess] = useState(authorization);
     const accessYes = () => setAccess(statusState.authorization = true);
@@ -18,10 +18,6 @@ const StatusProvider = ({children}) => {
     const setRu = () => setLanguage(statusState.lng = 'ru');
     const setEn = () => setLanguage(statusState.lng = 'en');
     const setSp = () => setLanguage(statusState.lng = 'sp');
-
-    const [activeUser, setUser] = useState(user);
-    const setNewUser = () => setUser(statusState.user = localStorage.username);
-    const removeUser = () => setUser(statusState.user = '');
     
     const contextStatus = { 
       statusState,
@@ -35,9 +31,6 @@ const StatusProvider = ({children}) => {
       setRu, 
       setEn, 
       setSp,
-      activeUser,
-      setNewUser,
-      removeUser,
     };
   
     return (

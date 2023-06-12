@@ -43,8 +43,7 @@ const ErrorBlock = () => {
 };
 
 const Signuppage = () => {
-  const { setActive, accessYes, accessNo, setNewUser } =
-    useContext(StatusContext);
+  const { setActive, accessYes, accessNo } = useContext(StatusContext);
   const { t } = useTranslation('translation', { keyPrefix: 'signUpPage' });
   const navigate = useNavigate();
 
@@ -66,7 +65,6 @@ const Signuppage = () => {
               accessYes();
               setActive();
               Object.assign(localStorage, response.data);
-              setNewUser();
             })
             .then(() => navigate('/'))
             .catch((error) => {

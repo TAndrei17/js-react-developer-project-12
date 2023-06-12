@@ -1,38 +1,49 @@
 import { useSelector } from 'react-redux';
-// import { useContext } from 'react';
-// mport StatusContext from '../../context/index.js';
+import React, { useEffect, useRef } from 'react';
 
 const MessagesBlockShow = (props) => {
-  // const { statusState } = useContext(StatusContext);
   const currentChannel = useSelector(
     (state) => state.channelReducer.currentChannel
   );
 
+  const messageRef = useRef(null);
+  const lastMessage = props.messages[props.messages.length - 1];
+  useEffect(() => {
+    if (lastMessage) {
+      messageRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+
   return (
     <>
-      <div
-        id="messages-box"
-        className="col-12 h-75 py-2 chat-messages overflow-auto">
-        {props.messages.map((message) => {
-          /* const isMyMessage = message.username === statusState.user;
+      <div className="col-12 h-75 overflow-auto">
+        <div id="messages-box" className="col-12 h-100 py-2 overflow-auto">
+          {props.messages.map((message) => {
+            const isMyMessage = message.username === localStorage.username;
 
-          const divStyle = {
-            display: 'inline-block',
-            backgroundColor: isMyMessage ? '#FFF373' : '#eee',
-          }; 
-          
-          style={divStyle}*/
+            const divStyle = {
+              display: 'inline-block',
+              backgroundColor: isMyMessage ? '#FFF373' : '#eee',
+            };
 
-          if (message.channelId !== currentChannel) {
-            return null;
-          }
+            if (message.channelId !== currentChannel) {
+              return null;
+            }
 
-          return (
-            <div key={message.id} className="text-break mb-2 py-2 px-2">
-              <b>{message.username}</b>: {message.body}
-            </div>
-          );
-        })}
+            return (
+              <div key={message.id}>
+                <div
+                  ref={messageRef}
+                  className="mb-2 py-2 px-2 rounded"
+                  style={divStyle}>
+                  <span>
+                    <strong>{message.username}:</strong> {message.body}
+                  </span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </>
   );
