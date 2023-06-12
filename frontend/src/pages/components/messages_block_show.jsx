@@ -7,10 +7,17 @@ const MessagesBlockShow = (props) => {
   );
 
   const messageRef = useRef(null);
-  const lastMessage = props.messages[props.messages.length - 1];
+
+  const currentMessages = props.messages.filter(
+    (message) => message.channelId === currentChannel
+  );
+  const lastMessage = currentMessages[currentMessages.length - 1];
+
   useEffect(() => {
     if (lastMessage) {
-      messageRef.current.scrollIntoView({ behavior: 'smooth' });
+      messageRef.current.scrollIntoView({
+        behavior: 'smooth',
+      });
     }
   });
 
@@ -18,7 +25,7 @@ const MessagesBlockShow = (props) => {
     <>
       <div className="col-12 h-75 overflow-auto">
         <div id="messages-box" className="col-12 h-100 py-2 overflow-auto">
-          {props.messages.map((message) => {
+          {currentMessages.map((message) => {
             const isMyMessage = message.username === localStorage.username;
 
             const divStyle = {
@@ -26,16 +33,9 @@ const MessagesBlockShow = (props) => {
               backgroundColor: isMyMessage ? '#FFF373' : '#eee',
             };
 
-            if (message.channelId !== currentChannel) {
-              return null;
-            }
-
             return (
-              <div key={message.id}>
-                <div
-                  ref={messageRef}
-                  className="mb-2 py-2 px-2 rounded"
-                  style={divStyle}>
+              <div key={message.id} ref={messageRef}>
+                <div className="mb-2 py-2 px-2 rounded" style={divStyle}>
                   <span>
                     <strong>{message.username}:</strong> {message.body}
                   </span>
