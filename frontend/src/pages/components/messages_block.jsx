@@ -21,6 +21,7 @@ const MessagesBlock = () => {
     return getChannels;
   });
 
+  /* eslint no-param-reassign: */
   const getCurrentChannelName = channels.reduce((acc, channel) => {
     if (channel.id === currentChannel) {
       acc = channel.name;

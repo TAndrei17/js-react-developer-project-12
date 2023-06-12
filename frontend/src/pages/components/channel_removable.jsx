@@ -19,7 +19,7 @@ const RemovableChannel = (props) => {
     id,
     classes1,
     classes2,
-    name
+    name,
   } = props;
 
   return (

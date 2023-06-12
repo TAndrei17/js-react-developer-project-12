@@ -24,30 +24,31 @@ const rollbarConfig = {
   environment: 'production',
 };
 
-const App = () => {
-  return (
-    <RollbarProvider config={rollbarConfig}>
-      <ErrorBoundary errorMessage="Error in React render">
-        <StatusProvider>
-          <Provider store={store}>
-            <Routes>
-              <Route
-                path="/"
-                element={(
-                  <RequireAuth>
-                    <Mainpage />
-                  </RequireAuth>
-                )} 
-              />
-              <Route path="/login" element={<Loginpage />} />
-              <Route path="/signup" element={<Signuppage />} />
-              <Route path="*" element={<Notfoundpage />} />
-            </Routes>
-          </Provider>
-        </StatusProvider>
-      </ErrorBoundary>
-    </RollbarProvider>
+const App = () =>
+  (
+    <>
+      <RollbarProvider config={rollbarConfig}>
+        <ErrorBoundary errorMessage="Error in React render">
+          <StatusProvider>
+            <Provider store={store}>
+              <Routes>
+                <Route
+                  path="/"
+                  element={(
+                    <RequireAuth>
+                      <Mainpage />
+                    </RequireAuth>
+                  )}
+                />
+                <Route path="/login" element={<Loginpage />} />
+                <Route path="/signup" element={<Signuppage />} />
+                <Route path="*" element={<Notfoundpage />} />
+              </Routes>
+            </Provider>
+          </StatusProvider>
+        </ErrorBoundary>
+      </RollbarProvider>
+    </>
   );
-};
 
 export default App;

@@ -4,6 +4,7 @@ const initialState = {
   currentChannel: '',
 };
 
+/* eslint no-param-reassign: */
 const channelSlice = createSlice({
   name: 'currentChannel',
   initialState,

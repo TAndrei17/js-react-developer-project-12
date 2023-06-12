@@ -2,7 +2,7 @@ import {
   test,
   render,
   screen,
-  expect
+  expect,
 } from '@testing-library/react';
 import App from './App';
 

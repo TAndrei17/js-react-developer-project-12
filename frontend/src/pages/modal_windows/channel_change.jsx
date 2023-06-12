@@ -41,8 +41,10 @@ const ChangeChannel = (props) => {
   const { id, name } = props;
 
   return (
-    <Button onClick={handleShow} className="dropdown-item">
-      {t('buttonChange')}
+    <>
+      <Button onClick={handleShow} className="dropdown-item">
+        {t('buttonChange')}
+      </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header>
@@ -51,13 +53,13 @@ const ChangeChannel = (props) => {
         <Formik
           validateOnChange={false}
           validateOnBlur={false}
-          initialValues={{ name: '' }}
+          initialValues={{ newName: '' }}
           onSubmit={(values, { resetForm }) => {
-            const { name } = values;
-            textFilter.loadDictionary(getLanguage(name));
-            const cleanValues = { name: textFilter.clean(name) };
-            const newName = { ...{ id }, ...cleanValues };
-            socket.emit('renameChannel', newName, (response) => response.status === 'ok' ? notifyRenameSuccess() : notifyNoConnection());
+            const { newName } = values;
+            textFilter.loadDictionary(getLanguage(newName));
+            const cleanValues = { name: textFilter.clean(newName)};
+            const updateChannel = { ...{ id }, ...cleanValues };
+            socket.emit('renameChannel', updateChannel, (response) => (response.status === 'ok') ? notifyRenameSuccess() : notifyNoConnection());
             handleClose();
             resetForm();
           }}
@@ -67,17 +69,17 @@ const ChangeChannel = (props) => {
               <Modal.Body>
                 <Field
                   autoFocus
-                  id="name"
-                  name="name"
+                  id="newName"
+                  name="newName"
                   type="text"
                   placeholder={name}
                   className="mb-2 form-control border-primary"
                   validate={validateChannel}
                 />
-                {errors.name && (
-                  <div className="text-danger">{errors.name}</div>
+                {errors.newName && (
+                  <div className="text-danger">{errors.newName}</div>
                 )}
-                <label className="visually-hidden" htmlFor="name">
+                <label className="visually-hidden" htmlFor="newName">
                   {t('formLabel')}
                 </label>
               </Modal.Body>
@@ -93,7 +95,7 @@ const ChangeChannel = (props) => {
           )}
         </Formik>
       </Modal>
-    </Button>
+    </>
   );
 };
 

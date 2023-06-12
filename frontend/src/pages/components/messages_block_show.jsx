@@ -40,7 +40,8 @@ const MessagesBlockShow = (props) => {
                 <span>
                   <strong>
                     {message.username}
-                    :{' '}
+                    :
+                    {' '}
                   </strong>
                   {message.body}
                 </span>

@@ -54,54 +54,54 @@ const CreateNewChannel = () => {
         <span className="visually-hidden">+</span>
       </Button>
 
-    <Modal show={show} onHide={handleClose}>
-      <Modal.Header closeButton>
-        <Modal.Title>{t('headerAddChannel')}</Modal.Title>
-      </Modal.Header>
-      <Formik
-        validateOnChange={false}
-        validateOnBlur={false}
-        initialValues={{ name: '' }}
-        onSubmit={(values, { resetForm }) => {
-          const { name } = values;
-          textFilter.loadDictionary(getLanguage(name));
-          const cleanValues = { name: textFilter.clean(name) };
-          socket.emit('newChannel', cleanValues, (response) => response.status === 'ok' ? notifyCreateSuccess() : notifyNoConnection());
-          handleClose();
-          resetForm();
-        }}
-      >
-        {({ errors, isSubmitting }) => (
-          <Form>
-            <Modal.Body>
-              <Field
-                autoFocus
-                id="name"
-                name="name"
-                type="text"
-                className="mb-2 form-control border-primary"
-                validate={validateChannel}
-              />
-              {errors.name && (
-                <div className="text-danger">{errors.name}</div>
-              )}
-              <label className="visually-hidden" htmlFor="name">
-                {t('formLabel')}
-              </label>
-            </Modal.Body>
-            <Modal.Footer>
-              <Button variant="secondary" onClick={handleClose}>
-                {t('buttonCancel')}
-              </Button>
-              <Button type="submit" variant="primary" disabled={isSubmitting}>
-                {t('buttonSend')}
-              </Button>
-            </Modal.Footer>
-          </Form>
-        )}
-      </Formik>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>{t('headerAddChannel')}</Modal.Title>
+        </Modal.Header>
+        <Formik
+          validateOnChange={false}
+          validateOnBlur={false}
+          initialValues={{ name: '' }}
+          onSubmit={(values, { resetForm }) => {
+            const { name } = values;
+            textFilter.loadDictionary(getLanguage(name));
+            const cleanValues = { name: textFilter.clean(name) };
+            socket.emit('newChannel', cleanValues, (response) => response.status === 'ok' ? notifyCreateSuccess() : notifyNoConnection());
+            handleClose();
+            resetForm();
+          }}
+        >
+          {({ errors, isSubmitting }) => (
+            <Form>
+              <Modal.Body>
+                <Field
+                  autoFocus
+                  id="name"
+                  name="name"
+                  type="text"
+                  className="mb-2 form-control border-primary"
+                  validate={validateChannel}
+                />
+                {errors.name && (
+                  <div className="text-danger">{errors.name}</div>
+                )}
+                <label className="visually-hidden" htmlFor="name">
+                  {t('formLabel')}
+                </label>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>
+                  {t('buttonCancel')}
+                </Button>
+                <Button type="submit" variant="primary" disabled={isSubmitting}>
+                  {t('buttonSend')}
+                </Button>
+              </Modal.Footer>
+            </Form>
+          )}
+        </Formik>
     </Modal>
-  </div>
+    </div>
   );
 };
 
