@@ -31,13 +31,14 @@ const App = () => {
         <StatusProvider>
           <Provider store={store}>
             <Routes>
-              <Route 
-                path="/" 
+              <Route
+                path="/"
                 element={(
                   <RequireAuth>
                     <Mainpage />
                   </RequireAuth>
-                )} />
+                )} 
+              />
               <Route path="/login" element={<Loginpage />} />
               <Route path="/signup" element={<Signuppage />} />
               <Route path="*" element={<Notfoundpage />} />

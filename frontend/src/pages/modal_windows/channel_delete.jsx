@@ -18,21 +18,15 @@ const DeleteChannel = (props) => {
   const { t } = useTranslation('translation', { keyPrefix: 'modalWindows' });
 
   const deleteChannel = (id) => {
-    socket.emit('removeChannel', id, (response) => {
-      return response.status === 'ok'
-        ? notifyRemoveSuccess()
-        : notifyNoConnection();
-    });
+    socket.emit('removeChannel', id, (response) => response.status === 'ok' ? notifyRemoveSuccess() : notifyNoConnection());
     handleClose();
   };
 
   const { id } = props;
 
   return (
-    <>
-      <Button onClick={handleShow} className="dropdown-item">
-        {t('buttonRemove')}
-      </Button>
+    <Button onClick={handleShow} className="dropdown-item">
+      {t('buttonRemove')}
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header>
@@ -55,7 +49,7 @@ const DeleteChannel = (props) => {
           </Button>
         </Modal.Footer>
       </Modal>
-    </>
+    </Button>
   );
 };
 

@@ -8,7 +8,7 @@ const StatusProvider = ({ children }) => {
   const [access, setAccess] = useState(authorization);
   const accessYes = () => setAccess(statusState.authorization = true);
   const accessNo = () => setAccess(statusState.authorization = false);
-  
+
   const [session, setSession] = useState(login);
   const setActive = () => setSession(statusState.login = 'active');
   const setInactive = () => setSession(statusState.login = 'inactive');
@@ -28,7 +28,7 @@ const StatusProvider = ({ children }) => {
     setInactive,
     language,
     setRu,
-    setEn, 
+    setEn,
     setSp,
   };
 

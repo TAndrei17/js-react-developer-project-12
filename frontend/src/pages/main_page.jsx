@@ -51,14 +51,14 @@ const Mainpage = () => {
         channelsActions.addChannels({
           entities: normalizeData.allChannels,
           ids: Object.keys(normalizeData.allChannels),
-        })
+        }),
       );
 
       dispatch(
         messagesActions.addMessages({
           entities: normalizeData.allMessages,
           ids: Object.keys(normalizeData.allMessages),
-        })
+        }),
       );
 
       dispatch(currChannelActions.setChannel(data.currentChannelId));
@@ -74,7 +74,7 @@ const Mainpage = () => {
       messagesActions.addMessage({
         body: payload,
         id: `message${payload.id}`,
-      })
+      }),
     );
   });
 
@@ -84,7 +84,7 @@ const Mainpage = () => {
       channelsActions.addChannel({
         body: payload,
         id: `channel${payload.id}`,
-      })
+      }),
     );
   });
 
@@ -98,7 +98,7 @@ const Mainpage = () => {
       channelsActions.removeChannel({
         id: `channel${payload.id}`,
         channelId: payload.id,
-      })
+      }),
     );
     dispatch(currChannelActions.setChannel(1));
   });
@@ -109,7 +109,7 @@ const Mainpage = () => {
       channelsActions.addChannel({
         body: payload,
         id: `channel${payload.id}`,
-      })
+      }),
     );
   });
 
@@ -129,7 +129,8 @@ const Mainpage = () => {
           <button
             type="button"
             className="btn btn-primary"
-            onClick={handleOnClick}>
+            onClick={handleOnClick}
+          >
             {t('logoutButton')}
           </button>
         </div>

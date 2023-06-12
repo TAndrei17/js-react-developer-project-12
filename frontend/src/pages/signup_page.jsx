@@ -72,7 +72,8 @@ const Signuppage = () => {
               notifyNoConnection();
             });
           resetForm();
-        }}>
+        }}
+      >
         {({ errors, touched, isSubmitting }) => (
           <div className="container mt-5">
             <div className="row justify-content-center align-content-center h-100">
@@ -132,7 +133,8 @@ const Signuppage = () => {
                 <button
                   type="submit"
                   className="w-100 mt-3 mb-3 btn btn-primary"
-                  disabled={isSubmitting}>
+                  disabled={isSubmitting}
+                >
                   {t('signupButton')}
                 </button>
               </Form>

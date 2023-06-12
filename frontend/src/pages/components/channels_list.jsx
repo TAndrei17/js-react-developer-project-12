@@ -6,7 +6,7 @@ import NoRemovableChannel from './channel_no_removable.jsx';
 
 const ChannelsList = (props) => {
   const currentChannel = useSelector(
-    (state) => state.channelReducer.currentChannel
+    (state) => state.channelReducer.currentChannel,
   );
 
   const { channels } = props;
@@ -14,7 +14,8 @@ const ChannelsList = (props) => {
   return (
     <ul
       id="channels-box"
-      className="nav nav-pills nav-fill px-2 my-3 d-block h-100 overflow-auto">
+      className="nav nav-pills nav-fill px-2 my-3 d-block h-100 overflow-auto"
+    >
       {channels.map((channel) => {
         const setClasses1 = cn('btn', 'rounded-0', 'w-100', 'text-start', {
           active: channel.id === currentChannel,
@@ -26,7 +27,7 @@ const ChannelsList = (props) => {
           'dropdown-toggle-split',
           {
             'btn-primary': channel.id === currentChannel,
-          }
+          },
         );
 
         if (channel.id === currentChannel && channel.removable === false) {

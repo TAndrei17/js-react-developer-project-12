@@ -15,39 +15,44 @@ const RemovableChannel = (props) => {
     dispatch(currChannelActions.setChannel(Number(target.id)));
   };
 
-  const { id, classes1, classes2, name } = props;
+  const {
+    id,
+    classes1,
+    classes2,
+    name
+  } = props;
 
   return (
-    <>
-      <div className="btn-group d-flex" role="group">
-        <button
-          id={id}
-          type="button"
-          className={classes1}
-          name={name}
-          onClick={onClickChooseChannel}>
-          <span className="me-1">#</span>
-          {name}
-        </button>
+    <div className="btn-group d-flex" role="group">
+      <button
+        id={id}
+        type="button"
+        className={classes1}
+        name={name}
+        onClick={onClickChooseChannel}
+      >
+        <span className="me-1">#</span>
+        {name}
+      </button>
 
-        <button
-          id={id}
-          type="button"
-          className={classes2}
-          data-bs-toggle="dropdown"
-          aria-expanded="false">
-          <span className="visually-hidden">{t('switchList')}</span>
-        </button>
-        <ul className="dropdown-menu">
-          <li>
-            <DeleteChannel id={id} />
-          </li>
-          <li>
-            <ChangeChannel id={id} name={name} />
-          </li>
-        </ul>
-      </div>
-    </>
+      <button
+        id={id}
+        type="button"
+        className={classes2}
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        <span className="visually-hidden">{t('switchList')}</span>
+      </button>
+      <ul className="dropdown-menu">
+        <li>
+          <DeleteChannel id={id} />
+        </li>
+        <li>
+          <ChangeChannel id={id} name={name} />
+        </li>
+      </ul>
+    </div>
   );
 };
 

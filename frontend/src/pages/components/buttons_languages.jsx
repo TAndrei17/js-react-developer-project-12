@@ -5,7 +5,12 @@ import i18n from '../../i18next.js';
 import StatusContext from '../../context/index.js';
 
 const ButtonsLng = () => {
-  const { statusState, setRu, setEn, setSp } = useContext(StatusContext);
+  const {
+    statusState,
+    setRu,
+    setEn,
+    setSp,
+  } = useContext(StatusContext);
 
   const activeButton = () => {
     const { lng } = statusState;
@@ -42,25 +47,22 @@ const ButtonsLng = () => {
   };
 
   return (
-    <>
-      <ButtonGroup className="me-3">
-        {radios.map((radio) => (
-          <ToggleButton
-            key={radio.value}
-            id={`radio-${radio.value}`}
-            type="radio"
-            variant="outline-primary"
-            name="radio"
-            value={radio.value}
-            checked={radioValue === radio.value}
-            onChange={(e) =>
-              handleLangSwitch(e.currentTarget.value, radio.name)
-            }>
-            {radio.name}
-          </ToggleButton>
-        ))}
-      </ButtonGroup>
-    </>
+    <ButtonGroup className="me-3">
+      {radios.map((radio) => (
+        <ToggleButton
+          key={radio.value}
+          id={`radio-${radio.value}`}
+          type="radio"
+          variant="outline-primary"
+          name="radio"
+          value={radio.value}
+          checked={radioValue === radio.value}
+          onChange={(e) => handleLangSwitch(e.currentTarget.value, radio.name)}
+        >
+          {radio.name}
+        </ToggleButton>
+      ))}
+    </ButtonGroup>
   );
 };
 

@@ -13,17 +13,16 @@ const NoRemovableChannel = (props) => {
   const { id, classes1, name } = props;
 
   return (
-    <>
-      <button
-        id={id}
-        type="button"
-        className={classes1}
-        name={name}
-        onClick={onClickChooseChannel}>
-        <span className="me-1">#</span>
-        {name}
-      </button>
-    </>
+    <button
+      id={id}
+      type="button"
+      className={classes1}
+      name={name}
+      onClick={onClickChooseChannel}
+    >
+      <span className="me-1">#</span>
+      {name}
+    </button>
   );
 };
 

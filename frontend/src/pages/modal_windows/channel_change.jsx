@@ -23,28 +23,26 @@ const ChangeChannel = (props) => {
   // it's for a validation, get all channels from state
   const channels = useSelector((state) => {
     const getChannels = state.channelsReducer.ids.map(
-      (id) => state.channelsReducer.entities[id]
+      (id) => state.channelsReducer.entities[id],
     );
     return getChannels;
   });
 
   // the term of validation: 'Must be unique'
   function validateChannel(value) {
-    let error;
     const checkChannels = channels.filter((channel) => channel.name === value);
     if (checkChannels.length > 0) {
-      error = t('errorMessage');
+      const error = t('errorMessage');
+      return error;
     }
-    return error;
+    return null;
   }
 
-  const { id } = props;
+  const { id, name } = props;
 
   return (
-    <>
-      <Button onClick={handleShow} className="dropdown-item">
-        {t('buttonChange')}
-      </Button>
+    <Button onClick={handleShow} className="dropdown-item">
+      {t('buttonChange')}
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header>
@@ -59,14 +57,11 @@ const ChangeChannel = (props) => {
             textFilter.loadDictionary(getLanguage(name));
             const cleanValues = { name: textFilter.clean(name) };
             const newName = { ...{ id }, ...cleanValues };
-            socket.emit('renameChannel', newName, (response) => {
-              return response.status === 'ok'
-                ? notifyRenameSuccess()
-                : notifyNoConnection();
-            });
+            socket.emit('renameChannel', newName, (response) => response.status === 'ok' ? notifyRenameSuccess() : notifyNoConnection());
             handleClose();
             resetForm();
-          }}>
+          }}
+        >
           {({ errors, isSubmitting }) => (
             <Form>
               <Modal.Body>
@@ -75,7 +70,7 @@ const ChangeChannel = (props) => {
                   id="name"
                   name="name"
                   type="text"
-                  placeholder={props.name}
+                  placeholder={name}
                   className="mb-2 form-control border-primary"
                   validate={validateChannel}
                 />
@@ -98,7 +93,7 @@ const ChangeChannel = (props) => {
           )}
         </Formik>
       </Modal>
-    </>
+    </Button>
   );
 };
 
