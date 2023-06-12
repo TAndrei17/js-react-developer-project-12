@@ -57,9 +57,14 @@ const ChangeChannel = (props) => {
           onSubmit={(values, { resetForm }) => {
             const { newName } = values;
             textFilter.loadDictionary(getLanguage(newName));
-            const cleanValues = { name: textFilter.clean(newName)};
+            const cleanValues = { name: textFilter.clean(newName) };
             const updateChannel = { ...{ id }, ...cleanValues };
-            socket.emit('renameChannel', updateChannel, (response) => (response.status === 'ok') ? notifyRenameSuccess() : notifyNoConnection());
+            socket.emit('renameChannel', updateChannel, (response) => {
+              const { status } = response;
+              return status === 'ok'
+                ? notifyRenameSuccess()
+                : notifyNoConnection();
+            });
             handleClose();
             resetForm();
           }}

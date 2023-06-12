@@ -9,7 +9,7 @@ const initialState = {
   ids: [],
 };
 
-/*eslint no-param-reassign: */
+/* eslint-disable */
 const messagesSlice = createSlice({
   name: 'messages',
   initialState,

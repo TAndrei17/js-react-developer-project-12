@@ -29,6 +29,7 @@ const CreateNewChannel = () => {
   });
 
   // the term of validation: 'Must be unique'
+  /* eslint-disable */
   function validateChannel(value) {
     const checkChannels = channels.filter((channel) => channel.name === value);
     if (checkChannels.length > 0) {
@@ -66,7 +67,12 @@ const CreateNewChannel = () => {
             const { name } = values;
             textFilter.loadDictionary(getLanguage(name));
             const cleanValues = { name: textFilter.clean(name) };
-            socket.emit('newChannel', cleanValues, (response) => response.status === 'ok' ? notifyCreateSuccess() : notifyNoConnection());
+            socket.emit('newChannel', cleanValues, (response) => {
+              const { status } = response;
+              return status === 'ok'
+                ? notifyCreateSuccess()
+                : notifyNoConnection();
+            });
             handleClose();
             resetForm();
           }}
@@ -100,7 +106,7 @@ const CreateNewChannel = () => {
             </Form>
           )}
         </Formik>
-    </Modal>
+      </Modal>
     </div>
   );
 };

@@ -41,7 +41,6 @@ const sp = {
       message_other: '{{count}} mensajes',
       messageField: 'Escriba su mensaje',
       ariaLabel: 'Mensaje nuevo',
-      // fieldTitle: '¡Hola Mundo!',
       messageSend: 'Emitir',
     },
     modalWindows: {

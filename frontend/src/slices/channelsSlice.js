@@ -8,7 +8,7 @@ const initialState = {
   ids: [],
 };
 
-/*eslint no-param-reassign: */
+/* eslint-disable */
 const channelsSlice = createSlice({
   name: 'channels',
   initialState,

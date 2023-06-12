@@ -18,7 +18,12 @@ const DeleteChannel = (props) => {
   const { t } = useTranslation('translation', { keyPrefix: 'modalWindows' });
 
   const deleteChannel = (id) => {
-    socket.emit('removeChannel', id, (response) => (response.status === 'ok') ? notifyRemoveSuccess() : notifyNoConnection());
+    socket.emit('removeChannel', id, (response) => {
+      const { status } = response;
+      return status === 'ok'
+        ? notifyRemoveSuccess()
+        : notifyNoConnection();
+    });
     handleClose();
   };
 
@@ -52,7 +57,7 @@ const DeleteChannel = (props) => {
           </Button>
         </Modal.Footer>
       </Modal>
-    </> 
+    </>
   );
 };
 
