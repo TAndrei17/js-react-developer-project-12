@@ -6,7 +6,7 @@ import { Formik, Form, Field } from 'formik';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-import { socket } from '../../App.js';
+import socket from '../../socket.js';
 import {
   notifyRenameSuccess,
   notifyNoConnection,
@@ -29,6 +29,7 @@ const ChangeChannel = (props) => {
   });
 
   // the term of validation: 'Must be unique'
+  /* eslint-disable */
   function validateChannel(value) {
     const checkChannels = channels.filter((channel) => channel.name === value);
     if (checkChannels.length > 0) {

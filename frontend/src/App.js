@@ -3,7 +3,6 @@ import { Provider as RollbarProvider, ErrorBoundary } from '@rollbar/react';
 import { Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
-import { io } from 'socket.io-client';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.js';
 import 'react-toastify/dist/ReactToastify.min.css';
@@ -17,7 +16,7 @@ import StatusProvider from './context/status_provider.js';
 import RequireAuth from './hoc/RequireAuth.jsx';
 import store from './slices/index.js';
 
-export const socket = io();
+// export const socket = io();
 
 const rollbarConfig = {
   accessToken: '05b61881b3fa407493a725bbe6a1f084',

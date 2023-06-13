@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Formik, Form, Field } from 'formik';
 
 import MessagesBlockShow from './messages_block_show.jsx';
-import { socket } from '../../App.js';
+import socket from '../../socket.js';
 import { notifyNoConnection } from '../popup_messages/messages.js';
 import { textFilter, getLanguage } from '../filter_text/index.js';
 

@@ -8,7 +8,7 @@ import axios from 'axios';
 import { actions as channelsActions } from '../slices/channelsSlice.js';
 import { actions as messagesActions } from '../slices/messagesSlice.js';
 import { actions as currChannelActions } from '../slices/channelSlice.js';
-import { socket } from '../App.js';
+import socket from '../socket.js';
 
 import ChannelsBlock from './components/channels_block.jsx';
 import MessagesBlock from './components/messages_block.jsx';

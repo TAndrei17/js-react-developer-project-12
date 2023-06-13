@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-import { socket } from '../../App.js';
+import socket from '../../socket.js';
 import {
   notifyRemoveSuccess,
   notifyNoConnection,
