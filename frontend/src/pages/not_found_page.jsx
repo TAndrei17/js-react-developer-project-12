@@ -1,10 +1,10 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
-import Header from './components/header.jsx';
+import Header from './components/header_mainpage.jsx';
 import ButtonsLng from './components/buttons_languages.jsx';
 
-const Notfoundpage = () => {
+const NotFoundPage = () => {
   const { t } = useTranslation('translation', { keyPrefix: 'notFoundPage' });
 
   return (
@@ -32,4 +32,4 @@ const Notfoundpage = () => {
   );
 };
 
-export default Notfoundpage;
+export default NotFoundPage;

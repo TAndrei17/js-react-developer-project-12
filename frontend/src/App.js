@@ -7,10 +7,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.js';
 import 'react-toastify/dist/ReactToastify.min.css';
 
-import Mainpage from './pages/main_page.jsx';
-import Loginpage from './pages/login_page.jsx';
-import Signuppage from './pages/signup_page.jsx';
-import Notfoundpage from './pages/not_found_page.jsx';
+import MainPage from './pages/main_page.jsx';
+import LoginPage from './pages/login_page.jsx';
+import SignUpPage from './pages/signup_page.jsx';
+import NotFoundPage from './pages/not_found_page.jsx';
 
 import StatusProvider from './context/status_provider.js';
 import RequireAuth from './hoc/RequireAuth.jsx';
@@ -36,13 +36,13 @@ const App = () => (
               path="/"
               element={(
                 <RequireAuth>
-                  <Mainpage />
+                  <MainPage />
                 </RequireAuth>
                 )}
             />
-            <Route path="/login" element={<Loginpage />} />
-            <Route path="/signup" element={<Signuppage />} />
-            <Route path="*" element={<Notfoundpage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/signup" element={<SignUpPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Provider>
       </StatusProvider>

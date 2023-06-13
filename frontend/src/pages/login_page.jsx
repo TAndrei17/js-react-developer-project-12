@@ -9,18 +9,10 @@ import axios from 'axios';
 import cn from 'classnames';
 
 import StatusContext from '../context/index.js';
-import Header from './components/header.jsx';
+import Header from './components/header_mainpage.jsx';
 import ButtonsLng from './components/buttons_languages.jsx';
 import i18next from '../i18next.js';
 import { notifyNoConnection } from './popup_messages/messages.js';
-
-const LoginSchema = yup.object().shape({
-  username: yup.string().trim().required(i18next.t('loginPage.nicRequire')),
-  password: yup
-    .string()
-    .required(i18next.t('loginPage.passwordRequire'))
-    .min(5, i18next.t('loginPage.passwordMin', { signs: 6 })),
-});
 
 const ErrorBlock = () => {
   const { statusState } = useContext(StatusContext);
@@ -35,10 +27,18 @@ const ErrorBlock = () => {
   return <div className={classError}>{t('formLoginError')}</div>;
 };
 
-const Loginpage = () => {
+const LoginPage = () => {
   const { setActive, accessYes, accessNo } = useContext(StatusContext);
   const navigate = useNavigate();
   const { t } = useTranslation('translation', { keyPrefix: 'loginPage' });
+
+  const LoginSchema = yup.object().shape({
+    username: yup.string().trim().required(i18next.t('loginPage.nicRequire')),
+    password: yup
+      .string()
+      .required(i18next.t('loginPage.passwordRequire'))
+      .min(5, i18next.t('loginPage.passwordMin', { signs: 6 })),
+  });
 
   return (
     <>
@@ -124,4 +124,4 @@ const Loginpage = () => {
   );
 };
 
-export default Loginpage;
+export default LoginPage;

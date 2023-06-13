@@ -6,6 +6,7 @@ import ChannelsList from './channels_list.jsx';
 
 const ChannelsBlock = () => {
   const { t } = useTranslation('translation', { keyPrefix: 'mainPage' });
+
   const channels = useSelector((state) => {
     const getChannels = state.channelsReducer.ids.map(
       (id) => state.channelsReducer.entities[id],
@@ -19,7 +20,7 @@ const ChannelsBlock = () => {
         <h2 className="col-auto me-auto my-auto">
           <strong className="h5 text-primary p-0">{t('channels')}</strong>
         </h2>
-        <CreateNewChannel className="col" />
+        <CreateNewChannel channels={channels} className="col" />
       </div>
       <div className="row h-75">
         <ChannelsList channels={channels} className="overflow-auto" />

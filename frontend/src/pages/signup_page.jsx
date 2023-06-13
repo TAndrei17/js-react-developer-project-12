@@ -9,26 +9,10 @@ import axios from 'axios';
 import cn from 'classnames';
 
 import StatusContext from '../context/index.js';
-import Header from './components/header.jsx';
+import Header from './components/header_mainpage.jsx';
 import ButtonsLng from './components/buttons_languages.jsx';
 import i18n from '../i18next.js';
 import { notifyNoConnection } from './popup_messages/messages.js';
-
-const LoginSchema = yup.object().shape({
-  username: yup
-    .string()
-    .trim()
-    .required(i18n.t('signUpPage.userNameRequire'))
-    .min(3, i18n.t('signUpPage.userNameMin')),
-  password: yup
-    .string()
-    .required(i18n.t('signUpPage.passwordRequire'))
-    .min(6, i18n.t('signUpPage.passwordMin', { signs: 6 })),
-  confirmPassword: yup
-    .string()
-    .required(i18n.t('signUpPage.confirmPasswordError'))
-    .oneOf([yup.ref('password'), null], i18n.t('signUpPage.equalRequire')),
-});
 
 const ErrorBlock = () => {
   const { statusState } = useContext(StatusContext);
@@ -42,10 +26,26 @@ const ErrorBlock = () => {
   return <div className={classError}>{t('formSignUpError')}</div>;
 };
 
-const Signuppage = () => {
+const SignUpPage = () => {
   const { setActive, accessYes, accessNo } = useContext(StatusContext);
   const { t } = useTranslation('translation', { keyPrefix: 'signUpPage' });
   const navigate = useNavigate();
+
+  const LoginSchema = yup.object().shape({
+    username: yup
+      .string()
+      .trim()
+      .required(i18n.t('signUpPage.userNameRequire'))
+      .min(3, i18n.t('signUpPage.userNameMin')),
+    password: yup
+      .string()
+      .required(i18n.t('signUpPage.passwordRequire'))
+      .min(6, i18n.t('signUpPage.passwordMin', { signs: 6 })),
+    confirmPassword: yup
+      .string()
+      .required(i18n.t('signUpPage.confirmPasswordError'))
+      .oneOf([yup.ref('password'), null], i18n.t('signUpPage.equalRequire')),
+  });
 
   return (
     <>
@@ -55,13 +55,12 @@ const Signuppage = () => {
       </Header>
       <Formik
         validationSchema={LoginSchema}
-        initialValues={{ username: '', password: '', confirm_password: '' }}
+        initialValues={{ username: '', password: '', confirmPassword: '' }}
         onSubmit={(values, { resetForm }) => {
           const { confirmPassword, ...updateValues } = values;
           axios
             .post('/api/v1/signup', updateValues)
             .then((response) => {
-              console.log(response.data);
               accessYes();
               setActive();
               Object.assign(localStorage, response.data);
@@ -146,4 +145,4 @@ const Signuppage = () => {
   );
 };
 
-export default Signuppage;
+export default SignUpPage;

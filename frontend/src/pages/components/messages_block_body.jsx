@@ -1,17 +1,11 @@
-import { useSelector } from 'react-redux';
 import React, { useEffect, useRef } from 'react';
 
-const MessagesBlockShow = (props) => {
-  const currentChannel = useSelector(
-    (state) => state.channelReducer.currentChannel,
-  );
-
+const MessagesBlockBody = (props) => {
+  const { id, messages } = props;
   const messageRef = useRef(null);
 
-  const { messages } = props;
-
   const currentMessages = messages.filter(
-    (message) => message.channelId === currentChannel,
+    (message) => message.channelId === id,
   );
   const lastMessage = currentMessages[currentMessages.length - 1];
 
@@ -54,4 +48,4 @@ const MessagesBlockShow = (props) => {
   );
 };
 
-export default MessagesBlockShow;
+export default MessagesBlockBody;
