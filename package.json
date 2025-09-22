@@ -1,21 +1,21 @@
 {
-  "name": "@hexlet/code",
-  "version": "1.0.0",
-  "description": "Project 2",
-  "main": "index.js",
-  "scripts": {
-    "build": "npm run build --prefix frontend",
-    "start": "start-server -s ./frontend/build",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "cd frontend && npm ci"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/TAndrei17/js-react-developer-project-12.git"
-  },
-  "author": "Andrei Trunkin",
-  "license": "ISC",
-  "dependencies": {
-    "@hexlet/chat-server": "^1.1.9"
-  }
+	"name": "@hexlet/code",
+	"version": "1.0.1",
+	"description": "Project 2",
+	"main": "index.js",
+	"scripts": {
+		"postinstall": "cd frontend && npm install",
+		"build": "cd frontend && DISABLE_ESLINT_PLUGIN=true npm run build",
+		"start": "npx @hexlet/chat-server --static ./frontend/build --port $PORT",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/TAndrei17/js-react-developer-project-12.git"
+	},
+	"author": "Andrei Trunkin",
+	"license": "ISC",
+	"dependencies": {
+		"@hexlet/chat-server": "^1.1.9"
+	}
 }
