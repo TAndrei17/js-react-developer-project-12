@@ -17,37 +17,36 @@ import RequireAuth from './hoc/RequireAuth.jsx';
 import store from './slices/index.js';
 
 // export const socket = io();
-
 const rollbarConfig = {
-  accessToken: '05b61881b3fa407493a725bbe6a1f084',
-  environment: 'production',
+	accessToken: process.env.REACT_APP_ROLLBAR_ACCESS_TOKEN,
+	environment: process.env.REACT_APP_ENV || 'production',
 };
 
 /* eslint arrow-body-style: ["error", "as-needed"] */
 /* eslint-env es6 */
 
 const App = () => (
-  <RollbarProvider config={rollbarConfig}>
-    <ErrorBoundary errorMessage="Error in React render">
-      <StatusProvider>
-        <Provider store={store}>
-          <Routes>
-            <Route
-              path="/"
-              element={(
-                <RequireAuth>
-                  <MainPage />
-                </RequireAuth>
-                )}
-            />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/signup" element={<SignUpPage />} />
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
-        </Provider>
-      </StatusProvider>
-    </ErrorBoundary>
-  </RollbarProvider>
+	<RollbarProvider config={rollbarConfig}>
+		<ErrorBoundary errorMessage="Error in React render">
+			<StatusProvider>
+				<Provider store={store}>
+					<Routes>
+						<Route
+							path="/"
+							element={
+								<RequireAuth>
+									<MainPage />
+								</RequireAuth>
+							}
+						/>
+						<Route path="/login" element={<LoginPage />} />
+						<Route path="/signup" element={<SignUpPage />} />
+						<Route path="*" element={<NotFoundPage />} />
+					</Routes>
+				</Provider>
+			</StatusProvider>
+		</ErrorBoundary>
+	</RollbarProvider>
 );
 
 export default App;
