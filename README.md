@@ -2,7 +2,7 @@
 
 ### Hexlet tests, linter status and maintainability
 
-[![Actions Status](https://github.com/TAndrei17/js-react-developer-project-12/workflows/hexlet-check/badge.svg)](https://github.com/TAndrei17/js-react-developer-project-12/actions) [![Maintainability](https://api.codeclimate.com/v1/badges/5905b9d1320b5fcba8ea/maintainability)](https://codeclimate.com/github/TAndrei17/js-react-developer-project-12/maintainability)
+[![Actions Status](https://github.com/TAndrei17/js-react-developer-project-12/workflows/hexlet-check/badge.svg)](https://github.com/TAndrei17/js-react-developer-project-12/actions) [![Maintainability](https://qlty.sh/gh/TAndrei17/projects/js-react-developer-project-12/maintainability.svg)](https://qlty.sh/gh/TAndrei17/projects/js-react-developer-project-12)
 
 ### Deploy on Railway.app
 
