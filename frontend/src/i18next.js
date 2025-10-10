@@ -8,9 +8,10 @@ const { lng } = statusState;
 i18next
   .use(initReactI18next)
   .init({
-    lng,
+    lng: lng || 'en',
     debug: true,
     resources,
+    compatibilityJSON: 'v4',
     interpolation: {
       escapeValue: false,
     },

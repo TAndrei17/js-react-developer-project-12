@@ -36,8 +36,9 @@ const notFoundPage = {
 const mainPage = {
   logoutButton: 'Salir',
   channels: 'Canales',
+  message_zero: '{{count}} mensajes',
   message_one: '{{count}} mensaje',
-  message_other: '{{count}} mensajes',
+  message_few: '{{count}} mensajes',
   messageField: 'Escriba su mensaje',
   ariaLabel: 'Mensaje nuevo',
   messageSend: 'Emitir',
